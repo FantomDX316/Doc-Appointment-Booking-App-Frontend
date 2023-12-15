@@ -4,14 +4,16 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Home from './Pages/Home/Home';
 
 
 
 const appRouter = createBrowserRouter([{
-  path:"/",
+  path: "/",
   element: <App />,
-  children:[{
-    
+  children: [{
+    path: "/",
+    element: <Home />
   }]
 }]);
 
