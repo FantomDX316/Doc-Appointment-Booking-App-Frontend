@@ -1,0 +1,23 @@
+.footer{
+    width:100vw;
+    border: 2px solid red;
+    height: 70vh;
+    background-color: black;
+}
+
+.footerContent{
+    height: 100%;
+    width: 100%;
+}
+
+.footerSocialLinks{
+    border: 2px solid white;
+}
+
+.footerTabs{
+    border: 2px solid grey;
+}
+
+.footerSocialLinksContent{
+    height: 100%;
+}
