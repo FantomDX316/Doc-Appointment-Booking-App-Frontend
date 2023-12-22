@@ -14,7 +14,7 @@ const Header = () => {
           {Array(4).fill(0).map(() => {
             return (<div className={`${styles.navTab} col-md-2`}>
               <div className="dropdown">
-                <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style={{background:"white",border:"0px",color:"black"}}>
                   Drop
                 </button>
                 <ul className="dropdown-menu">

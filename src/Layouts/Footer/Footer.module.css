@@ -21,3 +21,19 @@
 .footerSocialLinksContent{
     height: 100%;
 }
+
+.sendMailInput{
+    height: 100%;
+    border-top-right-radius: 0px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 0px;
+    padding: 10px;
+}
+.mailButton button{
+    height: 100%;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 20px;
+}
