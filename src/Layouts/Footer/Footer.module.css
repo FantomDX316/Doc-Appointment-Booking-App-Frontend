@@ -1,6 +1,5 @@
 .footer{
     width:100vw;
-    border: 2px solid red;
     height: 70vh;
     background-color: black;
 }
@@ -11,11 +10,12 @@
 }
 
 .footerSocialLinks{
-    border: 2px solid white;
 }
 
 .footerTabs{
-    border: 2px solid grey;
+}
+.footerTabsContent{
+    height: 100%;
 }
 
 .footerSocialLinksContent{

@@ -41,7 +41,22 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className={`${styles.footerTabs} col-md-8`}></div>
+        <div className={`${styles.footerTabs} col-md-8`}>
+          <div className={`${styles.footerTabsContent} row justify-content-center align-items-center`}>
+            {Array(4).fill(0).map(()=>{
+              return (
+                <div className="col-md-3 text-center">
+                  <strong style={{color:"white"}}><u>Popular</u></strong>
+                  {Array(5).fill(0).map(()=>{
+                    return (
+                      <p style={{color:"white"}} className="mt-3">Dummy tabs</p>
+                    )
+                  })}
+                </div>
+              )
+            })}
+          </div>
+        </div>
       </div>
     </div>
   )
