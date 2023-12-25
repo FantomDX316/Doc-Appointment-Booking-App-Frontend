@@ -1,0 +1,27 @@
+.loginContainer{
+    width: 100vw;
+    height:80vh;
+    border: 5px solid red;
+    background-image: url("../../../Assets/Images/homebg.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.5;
+}
+
+.loginWrapper{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding: 20px;
+}
+
+.loginCard{
+    height: 80%;
+    border: 1px solid black;
+    background-color: white;
+    border-radius: 20px;
+    margin-right: 8vw;
+}

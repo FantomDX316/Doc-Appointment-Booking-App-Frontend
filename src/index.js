@@ -1,3 +1,4 @@
+// ----------------------------------------------------------------Imports------------------------------------------------------------
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
@@ -5,7 +6,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Home from './Pages/Home/Home';
+import Login from './Pages/Authentication/Login/Login';
+import SignUp from './Pages/Authentication/SingUp/SignUp';
 
+// ------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+// ------------------------------------------------------------------------------------------------------------------------------------
 
 
 const appRouter = createBrowserRouter([{
@@ -14,6 +22,12 @@ const appRouter = createBrowserRouter([{
   children: [{
     path: "/",
     element: <Home />
+  },{
+    path:"/login",
+    element:<Login/>
+  },{
+    path:"/signup",
+    element:<SignUp/>
   }]
 }]);
 
