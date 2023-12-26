@@ -1,9 +1,23 @@
 // -----------------------------------------------------Imports-----------------------------------------------------------
 import React from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import styles from "./Header.module.css"
 // ------------------------------------------------------------------------------------------------------------------------
 
 const Header = () => {
+// -----------------------------------------------------States------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------------------------------
+// -----------------------------------------------------Hooks------------------------------------------------------------
+const navigate = useNavigate();
+
+const location = useLocation();
+
+// ------------------------------------------------------------------------------------------------------------------------
+// -----------------------------------------------------Functions------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------------------------------
+// -----------------------------------------------------useEffects------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------------------------------
+
   return (
     <div className={`${styles.header}`}>
       <div className={`${styles.headerContent} row align-items-center justify-content-center`}>
@@ -26,7 +40,11 @@ const Header = () => {
             </div>)
           })}
           <div className={`${styles.loginButton} col-md-4 d-flex justify-content-center`}>
-            <button type="button" className="btn btn-danger" style={{borderRadius:"100px",padding:"10px",letterSpacing:"3px"}}>LOG IN</button>
+            {location?.pathname=="/login"?<button type="button" className="btn btn-danger" style={{borderRadius:"100px",padding:"10px",letterSpacing:"3px"}} onClick={()=>{
+              navigate("/login")
+            }}>LOG IN</button>:<button type="button" className="btn btn-danger" style={{borderRadius:"100px",padding:"10px",letterSpacing:"3px"}} onClick={()=>{
+              navigate("/login")
+            }}>SIGN UP</button>}
           </div>
         </div>
       </div>

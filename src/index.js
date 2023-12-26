@@ -7,7 +7,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Home from './Pages/Home/Home';
 import Login from './Pages/Authentication/Login/Login';
-import SignUp from './Pages/Authentication/SingUp/SignUp';
+import SignUp from './Pages/Authentication/SignUp/SignUp';
 
 // ------------------------------------------------------------------------------------------------------------------------------------
 
