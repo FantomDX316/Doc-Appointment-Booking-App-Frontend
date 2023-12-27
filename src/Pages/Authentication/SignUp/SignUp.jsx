@@ -77,7 +77,7 @@ const SignUp = () => {
                     <input type="password" id="confirmPassword" placeholder='Confirm Password' className={`${styles.nameField}`} />
                   </div>
                   <div className={`col-md-12 col-sm-12 col-12 text-center mt-3 d-flex justify-content-center`}>
-                    <Select options={roleOptions} value={"he;lo"} className={`${styles.inputField}`}/>
+                    <Select options={roleOptions} placeholder={"Role"} className={`${styles.inputField}`}/>
                   </div>
                   <div className="signupButtonContent col-md-12 col-12 col-sm-12 text-center mt-5">
                     <div className="signupButton">
