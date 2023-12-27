@@ -37,24 +37,18 @@
     color: orange;
 }
 
-.emailInput {
+
+.nameField {
+    border-radius: 5px;
+    width: 100%;
+    padding: 8px;
+}
+.inputField {
     border-radius: 5px;
     width: 60%;
     padding: 8px;
 }
 
-.passwordInput {
-    border-radius: 5px;
-    width: 60%;
-    padding: 8px;
-
-}
-.confirmPasswordInput {
-    border-radius: 5px;
-    width: 60%;
-    padding: 8px;
-
-}
 
 .signupButtonEle {
     border-radius: 20px;
