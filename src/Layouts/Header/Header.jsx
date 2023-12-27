@@ -5,18 +5,18 @@ import styles from "./Header.module.css"
 // ------------------------------------------------------------------------------------------------------------------------
 
 const Header = () => {
-// -----------------------------------------------------States------------------------------------------------------------
-// ------------------------------------------------------------------------------------------------------------------------
-// -----------------------------------------------------Hooks------------------------------------------------------------
-const navigate = useNavigate();
+  // -----------------------------------------------------States------------------------------------------------------------
+  // ------------------------------------------------------------------------------------------------------------------------
+  // -----------------------------------------------------Hooks------------------------------------------------------------
+  const navigate = useNavigate();
 
-const location = useLocation();
+  const location = useLocation();
 
-// ------------------------------------------------------------------------------------------------------------------------
-// -----------------------------------------------------Functions------------------------------------------------------------
-// ------------------------------------------------------------------------------------------------------------------------
-// -----------------------------------------------------useEffects------------------------------------------------------------
-// ------------------------------------------------------------------------------------------------------------------------
+  // ------------------------------------------------------------------------------------------------------------------------
+  // -----------------------------------------------------Functions------------------------------------------------------------
+  // ------------------------------------------------------------------------------------------------------------------------
+  // -----------------------------------------------------useEffects------------------------------------------------------------
+  // ------------------------------------------------------------------------------------------------------------------------
 
   return (
     <div className={`${styles.header}`}>
@@ -28,7 +28,7 @@ const location = useLocation();
           {Array(4).fill(0).map(() => {
             return (<div className={`${styles.navTab} col-md-2`}>
               <div className="dropdown">
-                <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style={{background:"white",border:"0px",color:"black"}}>
+                <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style={{ background: "white", border: "0px", color: "black" }}>
                   Drop
                 </button>
                 <ul className="dropdown-menu">
@@ -40,11 +40,11 @@ const location = useLocation();
             </div>)
           })}
           <div className={`${styles.loginButton} col-md-4 d-flex justify-content-center`}>
-            {location?.pathname=="/login"?<button type="button" className="btn btn-danger" style={{borderRadius:"100px",padding:"10px",letterSpacing:"3px"}} onClick={()=>{
+            {location?.pathname == "/login" ? <button type="button" className="btn btn-danger" style={{ borderRadius: "100px", padding: "10px", letterSpacing: "3px" }} onClick={() => {
+              navigate("/signup")
+            }}>SIGN UP</button> : <button type="button" className="btn btn-danger" style={{ borderRadius: "100px", padding: "10px", letterSpacing: "3px" }} onClick={() => {
               navigate("/login")
-            }}>LOG IN</button>:<button type="button" className="btn btn-danger" style={{borderRadius:"100px",padding:"10px",letterSpacing:"3px"}} onClick={()=>{
-              navigate("/login")
-            }}>SIGN UP</button>}
+            }}>LOG IN</button>}
           </div>
         </div>
       </div>
