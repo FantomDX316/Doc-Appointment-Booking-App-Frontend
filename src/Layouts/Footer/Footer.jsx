@@ -8,7 +8,7 @@ import { RiTwitterXLine } from "react-icons/ri";
 const Footer = () => {
   return (
     <div className={`${styles.footer}`}>
-      <div className={`${styles.footerContent} row`}>
+      <div className={`${styles.footerContent} row p-4`}>
         <div className={`${styles.footerSocialLinks} col-md-4`}>
           <div className={`${styles.footerSocialLinksContent} row justify-content-center align-items-center flex-column`}>
             <div className={`col-md-12 mx-3`}>

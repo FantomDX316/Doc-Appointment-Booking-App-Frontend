@@ -44,7 +44,7 @@ const SignUp = () => {
   return (
     <div className={`${styles.signupContainer}`}>
       <div className={`${styles.signupWrapper}`}>
-        <div className={`${styles.signupCard} col-md-5`}>
+        <div className={`${styles.signupCard} col-md-4`}>
           <div className={`${styles.signupContent}`}>
             <div className="topContent col-md-12 col-12 col-sm-12 d-flex flex-column align-items-center">
               <div className={` col-md-12 col-12 col-sm-12 text-center p-2`}>
