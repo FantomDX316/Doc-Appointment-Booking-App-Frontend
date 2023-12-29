@@ -2,9 +2,14 @@
 import React from 'react'
 import styles from "./Home.module.css";
 import docImg from "../../Assets/Images/homeDocImg.jpg"
+import { useNavigate } from 'react-router-dom';
 // -----------------------------------------------------------------------------------------------------------------------------------
 
 const Home = () => {
+
+  // --------------------------------------------------------------Hooks----------------------------------------------------------------
+  const navigate = useNavigate();
+  // -----------------------------------------------------------------------------------------------------------------------------------
   return (
     <div className={`${styles.homeContainer}`}>
       <div className={`${styles.homeWrapper} row p-4`}>
@@ -13,7 +18,7 @@ const Home = () => {
             <h1>Book Appointment and Trust us with that</h1>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis similique nulla necessitatibus dignissimos doloribus quis quam dolor fuga corrupti vel. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos perspiciatis at reprehenderit id exercitationem earum numquam, ipsam ad dolorum itaque rem repellat neque blanditiis pariatur possimus iure consequuntur voluptatem ullam! Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, voluptatum. Ipsum voluptatum ut cupiditate accusantium, et aliquam,</p>
             <div className={`${styles.seeMoreBtn} col-md-12 col-sm-12 col-12 text-center`}>
-              <input type="button" name="See More" value="See More"/>
+              <input type="button" name="See More" value="See More" onClick={() => { navigate("/therapy") }} />
             </div>
           </div>
         </div>

@@ -8,6 +8,7 @@ import reportWebVitals from './reportWebVitals';
 import Home from './Pages/Home/Home';
 import Login from './Pages/Authentication/Login/Login';
 import SignUp from './Pages/Authentication/SignUp/SignUp';
+import Therapy from './Pages/Therapy/Therapy';
 
 // ------------------------------------------------------------------------------------------------------------------------------------
 
@@ -22,12 +23,15 @@ const appRouter = createBrowserRouter([{
   children: [{
     path: "/",
     element: <Home />
-  },{
-    path:"/login",
-    element:<Login/>
-  },{
-    path:"/signup",
-    element:<SignUp/>
+  }, {
+    path: "/login",
+    element: <Login />
+  }, {
+    path: "/signup",
+    element: <SignUp />
+  }, {
+    path: "/therapy",
+    element: <Therapy />
   }]
 }]);
 
