@@ -1,7 +1,7 @@
 .homeContainer{
     width: 100vw;
     height: 90vh;
-    border: 2px solid grey;
+    background-color: rgba(254, 250, 238, 0.818);
 }
 
 .homeWrapper{
@@ -35,4 +35,17 @@
     color: olive;
     font-weight: bold;
     font-family: cursive;
+}
+
+.seeMoreBtn input{
+    border-radius: 20px;
+    width: 30%;
+    padding: 10px;
+    background-color: orangered;
+    color: white;
+    font-weight: bold;
+    border: 2px solid white;
+    font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    letter-spacing: 2px;
+    font-size: large;
 }

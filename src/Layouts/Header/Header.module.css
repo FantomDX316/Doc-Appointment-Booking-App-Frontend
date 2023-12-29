@@ -2,6 +2,8 @@
     width: 100vw;
     height: 13vh;
     background-color: white;
+    border: 1px solid rgb(219, 219, 219);
+
 }
 
 .headerContent {
