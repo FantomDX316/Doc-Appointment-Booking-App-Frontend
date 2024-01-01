@@ -1,0 +1,31 @@
+.therapyContainer{
+    width: 100vw;
+}
+
+.therapyTopContent{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: peachpuff;
+}
+
+.backBtn{
+    border-bottom: 1px solid rgb(255, 183, 183);
+    padding-left: 5vw;
+}
+
+.backIcon{
+    font-size: 3vw;
+    cursor: pointer;
+}
+
+.topTitle h1{
+    color: black;
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+
+.therapyMidContent{
+    width: 100%;
+}
