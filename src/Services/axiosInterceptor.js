@@ -8,7 +8,7 @@ let store;
 // -------------------------------------------------------------------Functions---------------------------------------------------------
 
 // injectStore -- function to inject the redux store to the non react file after the store initialization
-export const injectStore = (store) => {
+export const injectStore = (_store) => {
     store = _store
 }
 
@@ -38,7 +38,7 @@ instance.interceptors.response.use((response) => {
             // originalRequest._retry -- setting retry to true to stop the infinite api call
             originalRequest._retry = true;
             // refresh token logic
-            
+
         } catch (error) {
             return Promise.reject(error)
         }
