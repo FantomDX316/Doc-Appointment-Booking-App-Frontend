@@ -14,6 +14,8 @@ export const injectStore = (store) => {
 
 // -------------------------------------------------------------------------------------------------------------------------------------
 
+// ----------------------------------------------------------Interceptor Configuration--------------------------------------------------
+
 // instance -- instance of the axios in order to do the api call
 export const instance = axios.create({
     baseURL: `${process.env.REACT_APP_WORKING_ENVIRONMENT === "development" ? process.env.REACT_APP_API_DEVELOPMENT_URL : process.env.REACT_APP_API_PRODUCTION_URL}`
@@ -32,9 +34,11 @@ instance.interceptors.response.use((response) => {
 
     if (error.response.status == 401 || (error.response.status == 403 && !originalRequest._retry)) {
         try {
-            // setting retry to true to stop the infinite api call
+
+            // originalRequest._retry -- setting retry to true to stop the infinite api call
             originalRequest._retry = true;
             // refresh token logic
+            
         } catch (error) {
             return Promise.reject(error)
         }

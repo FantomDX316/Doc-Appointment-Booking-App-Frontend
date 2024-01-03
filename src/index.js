@@ -9,13 +9,19 @@ import Home from './Pages/Home/Home';
 import Login from './Pages/Authentication/Login/Login';
 import SignUp from './Pages/Authentication/SignUp/SignUp';
 import Therapy from './Pages/Therapy/Therapy';
-
+import { Provider } from 'react-redux';
+import { persistStore } from 'redux-persist';
+import { store } from './Features/store';
+import { PersistGate } from "redux-persist/integration/react"
+import { injectStore } from './Services/axiosInterceptor';
 // ------------------------------------------------------------------------------------------------------------------------------------
 
 
 
 // ------------------------------------------------------------------------------------------------------------------------------------
 
+let persistor = persistStore(store);
+injectStore(store);
 
 const appRouter = createBrowserRouter([{
   path: "/",
@@ -38,9 +44,13 @@ const appRouter = createBrowserRouter([{
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={appRouter}>
-      <App />
-    </RouterProvider>
+    <Provider store={store}>
+      <RouterProvider router={appRouter}>
+        <PersistGate persistor={persistor}>
+          <App />
+        </PersistGate>
+      </RouterProvider>
+    </Provider>
   </React.StrictMode>
 );
 
