@@ -46,17 +46,34 @@ const Login = () => {
                                 <h1 className={`${styles.loginCardTitle}`}>Log In</h1>
                             </div>
                             <div className="noAccount">
-                                <h6>Don't Have an account? <span><u onClick={()=>{navigate("/signup")}} style={{cursor:"pointer"}}>Sign Up</u></span></h6>
+                                <h6>Don't Have an account? <span><u onClick={() => { navigate("/signup") }} style={{ cursor: "pointer" }}>Sign Up</u></span></h6>
                             </div>
 
                         </div>
                         <div className="midContent col-md-12 col-12 col-sm-12 p-4">
                             <form onSubmit={handleSubmit(loginHandler)} className={`${styles.loginForm} col-md-12 d-flex flex-column mt-4`}>
-                                <div className={`col-md-12 col-sm-12 col-12 text-center m-2`}>
-                                    <input type="text" id="email" placeholder='Email' className={`${styles.emailInput}`} />
+                                <div className={`${styles.fieldContainer} col-md-12 col-sm-12 col-12 text-center m-2`}>
+                                    <input type="text" id="email" placeholder='Email' className={`${styles.emailInput}`} {...register("email", {
+                                        required: {
+                                            value: true,
+                                            message: "Email is Required"
+                                        }
+                                    })} />
+                                    {errors.email && errors.email.type === "required" && (
+                                        <p className={`${styles.nameFieldError}`}>Email is required.</p>
+                                    )}
                                 </div>
-                                <div className={`col-md-12 col-sm-12 col-12 text-center m-2`}>
-                                    <input type="password" id="password" placeholder='Password' className={`${styles.passwordInput}`} />
+                                <div className={`${styles.fieldContainer} col-md-12 col-sm-12 col-12 text-center m-2`}>
+                                    <input type="password" id="password" placeholder='Password' className={`${styles.passwordInput}`} {...register("password", {
+                                        required: {
+                                            value: true,
+                                            message: "Password is required"
+                                        },
+
+                                    })} />
+                                    {errors.password && errors.password.type === "required" && (
+                                        <p className={`${styles.nameFieldError}`}>Password is required.</p>
+                                    )}
                                 </div>
                                 <div className="loginButtonContent col-md-12 col-12 col-sm-12 text-center mt-5">
                                     <div className="forgotPasswordContent">
