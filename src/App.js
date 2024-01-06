@@ -1,27 +1,72 @@
 // ----------------------------------------------------------------Imports--------------------------------------------------------------
 import {
   createBrowserRouter,
+  Navigate,
   RouterProvider,
+  useNavigate,
 } from "react-router-dom";
 import './App.css';
-import Footer from "./Layouts/Footer/Footer";
-import Header from "./Layouts/Header/Header";
 import Main from "./Layouts/Main/Main";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Home from './Pages/Home/Home';
+import Login from './Pages/Authentication/Login/Login';
+import SignUp from './Pages/Authentication/SignUp/SignUp';
+import Therapy from './Pages/Therapy/Therapy';
+import { useSelector } from "react-redux";
 // ---------------------------------------------------------------------------------------------------------------------------------------
 
 
 function App() {
 
+
+  // ---------------------------------------------------------------States------------------------------------------------------------------
+  // ---------------------------------------------------------------------------------------------------------------------------------------
+  // ---------------------------------------------------------------Hooks------------------------------------------------------------------
+  const { isUserLoggedIn } = useSelector((state) => state?.authentication)
+
+  // ---------------------------------------------------------------------------------------------------------------------------------------
+  // -------------------------------------------------------------Functions------------------------------------------------------------------
+
+  // ---------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+  // ---------------------------------------------------------------------------------------------------------------------------------------
+
+  const appRouter = createBrowserRouter([{
+    path: "/",
+    element: <Main />,
+    children: [{
+      path: "/",
+      element: isUserLoggedIn ? <Home /> : <Navigate to="/login" />
+    }, {
+      path: "/login",
+      element: !isUserLoggedIn ? <Login /> : <Navigate to="/" />
+    }, {
+      path: "/signup",
+      element: !isUserLoggedIn ? <SignUp /> : <Navigate to="/" />
+    }, {
+      path: "/therapy",
+      element: isUserLoggedIn ? <Therapy /> : <Navigate to="/login" />
+    }]
+  }]);
+
+  // ---------------------------------------------------------------------------------------------------------------------------------------
+
+
   // -----------------------------------------------------------------------------------------------------------------------------------------
   return (
-    <>
-      <Header />
+
+    <RouterProvider router={appRouter}>
       <Main />
-      <Footer />
       <ToastContainer autoClose={1000} position="top-center" />
-    </>
+    </RouterProvider>
+
   )
 }
 
