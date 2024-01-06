@@ -3,6 +3,7 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { persistReducer } from "redux-persist";
 import { encryptTransform } from "redux-persist-transform-encrypt";
 import storage from "redux-persist/lib/storage";
+import { authenticationReducer } from "./Slices/Authentication/authenticationSlice";
 // --------------------------------------------------------------------------------------------------------------------------------------------
 
 // -------------------------------------------------------------------Store Config--------------------------------------------------------------
@@ -21,7 +22,9 @@ const persistReducerConfiguration = {
 }
 
 // reducer -- function which holds the redux state and combines all of em 
-const reducer = combineReducers({});
+const reducer = combineReducers({
+    authentication: authenticationReducer
+});
 
 // rootReducer -- rootReducer is passed as the root reducer and also used for reseting the state
 const rootReducer = (state, action) => {

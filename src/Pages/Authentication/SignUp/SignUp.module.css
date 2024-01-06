@@ -56,6 +56,12 @@
     width: 60%;
     padding: 8px;
 }
+.selectRoleFieldError{
+    width: 100%;
+    color: red;
+    display: block;
+    text-align: center;
+}
 
 
 .signupButtonEle {

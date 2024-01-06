@@ -7,11 +7,11 @@ import { instance } from "../../../Services/axiosInterceptor";
 
 
 // login -- login action to call the login api and get the respective response
-export const login = createAsyncThunk("authentication/login",async (payload,{rejectWithValue})=>{
+export const login = createAsyncThunk("authentication/login", async (payload, { rejectWithValue }) => {
     try {
-        const response = await instance.post("/auth/login",payload,{
-            headers:{
-                "Content-Type":"application/json"
+        const response = await instance.post("/auth/login", payload, {
+            headers: {
+                "Content-Type": "application/json"
             }
         })
 
@@ -23,11 +23,11 @@ export const login = createAsyncThunk("authentication/login",async (payload,{rej
 
 
 // signUp -- signUp action to call the signUp api and get the respective response
-export const signUp = createAsyncThunk("authentication/signUp",async (payload,{rejectWithValue})=>{
+export const signUp = createAsyncThunk("authentication/signUp", async ({ payload, role }, { rejectWithValue }) => {
     try {
-        const response = await instance.post("/auth/signUp",payload,{
-            headers:{
-                "Content-Type":"application/json"
+        const response = await instance.post(`${role === "User" ? "/profile" : ""}`, payload, {
+            headers: {
+                "Content-Type": "application/json"
             }
         })
 

@@ -1,6 +1,7 @@
 // ---------------------------------------------------------Imports-------------------------------------------------------------------
 import { createSlice } from "@reduxjs/toolkit";
-import { login } from "../../Actions/Authentication/authenticationActions";
+import { toast } from "react-toastify";
+import { login, signUp } from "../../Actions/Authentication/authenticationActions";
 // -----------------------------------------------------------------------------------------------------------------------------------
 
 // -----------------------------------------------------------------------------------------------------------------------------------
@@ -9,17 +10,22 @@ const initialState = {
     isSignUpLoading: false,
     loggedInUserData: {},
     isUserLoggedIn: false,
-    errorMessage:""
+    errorMessage: "",
+    isUserCreated: false
 }
 
 // -----------------------------------------------------------------------------------------------------------------------------------
 
 // -----------------------------------------------------Authentication Slice----------------------------------------------------------
 
-const loginSlice = createSlice({
+const authenticationSlice = createSlice({
     name: "authentication",
     initialState,
-    reducers: {},
+    reducers: {
+        resetSignUpState: (state, action) => {
+            state.isUserCreated = action.payload;
+        }
+    },
     extraReducers: (builder) => {
         builder
 
@@ -46,18 +52,26 @@ const loginSlice = createSlice({
                 state.isSignUpLoading = true;
                 state.isUserLoggedIn = false;
                 state.loggedInUserData = {};
+                state.isUserCreated = false
+
             })
             .addCase(signUp.fulfilled, (state, action) => {
                 state.isSignUpLoading = false;
                 state.isUserLoggedIn = false;
-                state.loggedInUserData = action?.payload
+                state.isUserCreated = true
+
+                toast.success("User Created Successfully")
 
             })
             .addCase(signUp.rejected, (state, action) => {
                 state.isSignUpLoading = false;
                 state.isUserLoggedIn = false;
                 state.loggedInUserData = {};
+                state.isUserCreated = false
                 state.errorMessage = action?.payload?.message;
             })
     }
 })
+
+export const authenticationReducer = authenticationSlice.reducer;
+export const { resetSignUpState } = authenticationSlice.actions;
