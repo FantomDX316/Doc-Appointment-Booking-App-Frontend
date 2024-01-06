@@ -34,12 +34,14 @@ const authenticationSlice = createSlice({
                 state.isLoading = true;
                 state.isUserLoggedIn = false;
                 state.loggedInUserData = {};
+                state.errorMessage = "";
+
             })
             .addCase(login.fulfilled, (state, action) => {
                 state.isLoading = false;
                 state.isUserLoggedIn = true;
                 state.loggedInUserData = action?.payload
-
+                toast.success("Logged In Successfully")
             })
             .addCase(login.rejected, (state, action) => {
                 state.isLoading = false;
@@ -53,6 +55,8 @@ const authenticationSlice = createSlice({
                 state.isUserLoggedIn = false;
                 state.loggedInUserData = {};
                 state.isUserCreated = false
+                state.errorMessage = "";
+
 
             })
             .addCase(signUp.fulfilled, (state, action) => {

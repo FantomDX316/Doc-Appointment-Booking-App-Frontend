@@ -9,7 +9,7 @@ import { instance } from "../../../Services/axiosInterceptor";
 // login -- login action to call the login api and get the respective response
 export const login = createAsyncThunk("authentication/login", async (payload, { rejectWithValue }) => {
     try {
-        const response = await instance.post("/auth/login", payload, {
+        const response = await instance.post("/login", payload, {
             headers: {
                 "Content-Type": "application/json"
             }

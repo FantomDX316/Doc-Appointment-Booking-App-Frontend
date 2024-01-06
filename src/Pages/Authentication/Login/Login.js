@@ -3,6 +3,9 @@ import React from 'react';
 import styles from "./Login.module.css"
 import { useForm } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
+import { login } from '../../../Features/Actions/Authentication/authenticationActions';
+import { toast } from 'react-toastify';
+import { useDispatch } from 'react-redux';
 // -------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -20,15 +23,19 @@ const Login = () => {
 
     const navigate = useNavigate();
 
+
+    // dispatch -- hook to dispatch the actions
+    const dispatch = useDispatch();
+
     // -------------------------------------------------------------------------------------------------------------------------------------
     // --------------------------------------------------------------Functions--------------------------------------------------------------
 
     // loginHandler -- handler to call the login api
-    const loginHandler = (e) => {
+    const loginHandler = (data) => {
         try {
-
+            dispatch(login(data))
         } catch (error) {
-
+            toast.error(error.message)
         }
     }
 
