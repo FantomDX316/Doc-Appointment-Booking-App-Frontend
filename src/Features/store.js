@@ -28,6 +28,11 @@ const reducer = combineReducers({
 
 // rootReducer -- rootReducer is passed as the root reducer and also used for reseting the state
 const rootReducer = (state, action) => {
+    if(action.type == "authentication/clearReduxStoreData"){
+        state = undefined;
+        localStorage.clear();
+        sessionStorage.clear();
+    }
     return reducer(state, action);
 }
 

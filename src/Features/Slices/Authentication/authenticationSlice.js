@@ -24,6 +24,9 @@ const authenticationSlice = createSlice({
     reducers: {
         resetSignUpState: (state, action) => {
             state.isUserCreated = action.payload;
+        },
+        clearReduxStoreData: (state, action) => {
+
         }
     },
     extraReducers: (builder) => {
@@ -78,4 +81,4 @@ const authenticationSlice = createSlice({
 })
 
 export const authenticationReducer = authenticationSlice.reducer;
-export const { resetSignUpState } = authenticationSlice.actions;
+export const { resetSignUpState, clearReduxStoreData } = authenticationSlice.actions;
