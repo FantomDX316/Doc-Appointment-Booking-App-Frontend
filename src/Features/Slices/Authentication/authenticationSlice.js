@@ -34,20 +34,20 @@ const authenticationSlice = createSlice({
 
             // login  lifecycle actions
             .addCase(login.pending, (state, action) => {
-                state.isLoading = true;
+                state.isLoginLoading = true;
                 state.isUserLoggedIn = false;
                 state.loggedInUserData = {};
                 state.errorMessage = "";
 
             })
             .addCase(login.fulfilled, (state, action) => {
-                state.isLoading = false;
+                state.isLoginLoading = false;
                 state.isUserLoggedIn = true;
                 state.loggedInUserData = action?.payload
                 toast.success("Logged In Successfully")
             })
             .addCase(login.rejected, (state, action) => {
-                state.isLoading = false;
+                state.isLoginLoading = false;
                 state.isUserLoggedIn = false;
                 state.loggedInUserData = {};
                 state.errorMessage = action?.payload?.message;

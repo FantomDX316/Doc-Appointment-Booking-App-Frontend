@@ -5,7 +5,8 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
 import { login } from '../../../Features/Actions/Authentication/authenticationActions';
 import { toast } from 'react-toastify';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { ButtonLoadingSpinner } from '../../../Components/Loader/ButtonLoadingSpinner/ButtonLoadingSpinner';
 // -------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -27,6 +28,8 @@ const Login = () => {
     // dispatch -- hook to dispatch the actions
     const dispatch = useDispatch();
 
+
+    const { isLoginLoading } = useSelector((state) => state?.authentication)
     // -------------------------------------------------------------------------------------------------------------------------------------
     // --------------------------------------------------------------Functions--------------------------------------------------------------
 
@@ -87,7 +90,7 @@ const Login = () => {
                                         <h6><u>Forgot Your Password?</u></h6>
                                     </div>
                                     <div className="loginButton">
-                                        <button type="submit" className={`${styles.loginButtonEle}`}>LOG IN</button>
+                                        {isLoginLoading ? <button type="button" disabled={true} className={`${styles.loginButtonEle}`}><ButtonLoadingSpinner /></button> : <button type="submit" className={`${styles.loginButtonEle}`}>LOG IN</button>}
                                     </div>
                                 </div>
                             </form>

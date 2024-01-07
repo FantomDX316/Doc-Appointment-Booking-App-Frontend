@@ -9,6 +9,7 @@ import { toast } from 'react-toastify';
 import { signUp } from '../../../Features/Actions/Authentication/authenticationActions';
 import { useEffect } from 'react';
 import { resetSignUpState } from '../../../Features/Slices/Authentication/authenticationSlice';
+import { ButtonLoadingSpinner } from '../../../Components/Loader/ButtonLoadingSpinner/ButtonLoadingSpinner';
 
 // -----------------------------------------------------------------------------------------------------------------------------------
 
@@ -132,7 +133,7 @@ const SignUp = () => {
                   </div>
                   <div className="signupButtonContent col-md-12 col-12 col-sm-12 text-center mt-3">
                     <div className="signupButton">
-                      <button type="submit" className={`${styles.signupButtonEle}`}>SIGN UP</button>
+                      {isSignUpLoading ? <button type="button" disabled={true} className={`${styles.signupButtonEle}`}><ButtonLoadingSpinner /></button> : <button type="submit" className={`${styles.signupButtonEle}`}>SIGN UP</button>}
                     </div>
                   </div>
                 </div>
