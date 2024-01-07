@@ -79,7 +79,7 @@ const SignUp = () => {
               <form onSubmit={handleSubmit(signupHandler)} className={`${styles.signupForm} col-md-12 d-flex flex-column mt-4`}>
                 <div className="row">
                   <div className={`${styles.fieldContainer} col-md-6 col-sm-6 col-12 text-center`}>
-                    <input type="text" id="firstName" placeholder='First Name' className={`${styles.nameField}`} {...register("firstName", {
+                    <input type="text" id="firstName" disabled={isSignUpLoading ? true : false} placeholder='First Name' className={`${styles.nameField}`} {...register("firstName", {
                       required: true,
                     })} />
                     {errors.firstName && errors.firstName.type === "required" && (
@@ -129,7 +129,7 @@ const SignUp = () => {
                     )}
                   </div>
                   <div className={`${styles.fieldContainer} col-md-12 col-sm-12 col-12 text-center mt-2 d-flex justify-content-center`}>
-                    <Select options={roleOptions} placeholder={"Role"} className={`${styles.inputField}`} onChange={(e) => setRole(e.value)} />
+                    <Select options={roleOptions} placeholder={"Role"} disabled={isSignUpLoading ? true : false} className={`${styles.inputField}`} onChange={(e) => setRole(e.value)} />
                   </div>
                   <div className="signupButtonContent col-md-12 col-12 col-sm-12 text-center mt-3">
                     <div className="signupButton">

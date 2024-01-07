@@ -63,7 +63,7 @@ const Login = () => {
                         <div className="midContent col-md-12 col-12 col-sm-12 p-4">
                             <form onSubmit={handleSubmit(loginHandler)} className={`${styles.loginForm} col-md-12 d-flex flex-column mt-4`}>
                                 <div className={`${styles.fieldContainer} col-md-12 col-sm-12 col-12 text-center m-2`}>
-                                    <input type="text" id="email" placeholder='Email' className={`${styles.emailInput}`} {...register("email", {
+                                    <input type="text" id="email" disabled={isLoginLoading ? true : false} placeholder='Email' className={`${styles.emailInput}`} {...register("email", {
                                         required: {
                                             value: true,
                                             message: "Email is Required"
@@ -74,7 +74,7 @@ const Login = () => {
                                     )}
                                 </div>
                                 <div className={`${styles.fieldContainer} col-md-12 col-sm-12 col-12 text-center m-2`}>
-                                    <input type="password" id="password" placeholder='Password' className={`${styles.passwordInput}`} {...register("password", {
+                                    <input type="password" id="password" disabled={isLoginLoading ? true : false} placeholder='Password' className={`${styles.passwordInput}`} {...register("password", {
                                         required: {
                                             value: true,
                                             message: "Password is required"
