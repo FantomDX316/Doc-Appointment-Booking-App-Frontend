@@ -25,7 +25,7 @@ export const login = createAsyncThunk("authentication/login", async (payload, { 
 // signUp -- signUp action to call the signUp api and get the respective response
 export const signUp = createAsyncThunk("authentication/signUp", async ({ payload, role }, { rejectWithValue }) => {
     try {
-        const response = await instance.post(`${role === "User" ? "/profile" : ""}`, payload, {
+        const response = await instance.post(`${role === "User" ? "/profile" : role === "Counselor" ? "/profile" : ""}`, payload, {
             headers: {
                 "Content-Type": "application/json"
             }
