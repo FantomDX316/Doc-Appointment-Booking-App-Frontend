@@ -13,7 +13,9 @@ import Home from './Pages/Home/Home';
 import Login from './Pages/Authentication/Login/Login';
 import SignUp from './Pages/Authentication/SignUp/SignUp';
 import Therapy from './Pages/Therapy/Therapy';
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { clearReduxStoreData } from "./Features/Slices/Authentication/authenticationSlice";
 // ---------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -25,8 +27,18 @@ function App() {
   // ---------------------------------------------------------------Hooks------------------------------------------------------------------
   const { isUserLoggedIn } = useSelector((state) => state?.authentication)
 
+  const dispatch = useDispatch()
+
   // ---------------------------------------------------------------------------------------------------------------------------------------
   // -------------------------------------------------------------Functions------------------------------------------------------------------
+
+  // ---------------------------------------------------------------------------------------------------------------------------------------
+  // -------------------------------------------------------------useEffect------------------------------------------------------------------
+  useEffect(()=>{
+    if(!localStorage.getItem("bearerToken")){
+      dispatch(clearReduxStoreData());
+    }
+  },[])
 
   // ---------------------------------------------------------------------------------------------------------------------------------------
 

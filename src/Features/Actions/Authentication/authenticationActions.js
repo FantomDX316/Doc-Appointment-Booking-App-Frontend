@@ -15,6 +15,10 @@ export const login = createAsyncThunk("authentication/login", async (payload, { 
             }
         })
 
+        if (response?.status == 201 || response?.status == 200) {
+            let token = response?.data?.message;
+            localStorage.setItem("bearerToken", token)
+        }
         return response?.data;
     } catch (error) {
         return rejectWithValue(error)
