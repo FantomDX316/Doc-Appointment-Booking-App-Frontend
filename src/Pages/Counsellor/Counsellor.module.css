@@ -1,25 +1,57 @@
-.counsellorContainer{
+.counsellorContainer {
     width: 100vw;
 }
 
-.counsellorWrapper{
-    width: 90%;
+.counsellorWrapper {
+    width: 70%;
     padding: 20px;
 }
 
-.counsellorProfileImageCard{
+.counsellorProfileImageCard {
     border: 2px solid red;
     padding: 15px;
 }
 
-.profileImageFrame{
+.profileImageFrame {
     border: 2px solid green;
     width: 16rem;
     height: 16rem;
     border-radius: 50%;
 }
-.profileImageFrame img{
+
+.profileImageFrame img {
     width: 100%;
     height: 100%;
     border-radius: 50%;
+}
+
+.counsellorProfileInfo {
+    border: 2px solid red;
+    padding: 15px;
+}
+
+.counsellorProfileInfoTitle {
+    font-weight: bolder;
+    font-size: large;
+
+}
+
+.counsellorBio {
+    border: 2px solid red;
+    padding: 15px;
+}
+
+.counsellorBioTitle {
+    font-weight: bolder;
+    font-size: large;
+}
+
+.counsellorBioTextArea {
+    height: 150px;
+    border-radius: 5px;
+}
+
+.counsellorIntroductoryVideos {
+    border: 2px solid red;
+    padding: 15px;
 }
