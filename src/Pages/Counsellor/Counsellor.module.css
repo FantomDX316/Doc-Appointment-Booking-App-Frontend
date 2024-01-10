@@ -8,15 +8,16 @@
 }
 
 .counsellorProfileImageCard {
-    border: 2px solid red;
+    border: 1px solid grey;
     padding: 15px;
 }
 
 .profileImageFrame {
-    border: 2px solid green;
+    border: 1px solid grey;
     width: 16rem;
     height: 16rem;
     border-radius: 50%;
+    cursor: pointer;
 }
 
 .profileImageFrame img {
@@ -26,7 +27,7 @@
 }
 
 .counsellorProfileInfo {
-    border: 2px solid red;
+    border: 1px solid grey;
     padding: 15px;
 }
 
@@ -37,7 +38,7 @@
 }
 
 .counsellorBio {
-    border: 2px solid red;
+    border: 1px solid grey;
     padding: 15px;
 }
 
@@ -52,6 +53,6 @@
 }
 
 .counsellorIntroductoryVideos {
-    border: 2px solid red;
+    border: 1px solid grey;
     padding: 15px;
 }

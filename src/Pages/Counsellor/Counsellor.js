@@ -1,16 +1,39 @@
 // -------------------------------------------------------------Imports---------------------------------------------------------------
-import React from 'react';
+import React, { useRef } from 'react';
 import styles from "./Counsellor.module.css";
 import defaultProfileImage from "../../Assets/Images/defaultProfileImage.jpg"
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 // -----------------------------------------------------------------------------------------------------------------------------------
 
 const Counsellor = () => {
     // --------------------------------------------------------------States---------------------------------------------------------------
     const counsellorInfo = ["Specialization", "Experience", "Consultation Fee", "Availability"]
+
+    const [profileImage, setProfileImage] = useState(defaultProfileImage);
     // -----------------------------------------------------------------------------------------------------------------------------------
     // ---------------------------------------------------------------Hooks---------------------------------------------------------------
+    const profileImageRef = useRef();
+
+    const {
+        register,
+        formState:{errors},
+        handleSubmit,
+        reset
+    } = useForm()
     // -----------------------------------------------------------------------------------------------------------------------------------
     // -------------------------------------------------------------Functions-------------------------------------------------------------
+
+    const profileImageHandler = (e) => {
+        let imgFile = e.target.files[0];
+        let imgUrl = URL.createObjectURL(imgFile);
+        setProfileImage(imgUrl);
+    }
+
+    // counsellorSubmitHandler -- handler to handle the final submit
+    const counsellorSubmitHandler = ()=>{
+
+    }
     // -----------------------------------------------------------------------------------------------------------------------------------
     // -------------------------------------------------------------useEffects------------------------------------------------------------
     // -----------------------------------------------------------------------------------------------------------------------------------
@@ -18,10 +41,11 @@ const Counsellor = () => {
 
     return (
         <div className={`${styles.counsellorContainer} d-flex flex-column align-items-center`}>
-            <div className={`${styles.counsellorWrapper} d-flex flex-column align-items-center`}>
+            <form className={`${styles.counsellorWrapper} d-flex flex-column align-items-center`} onSubmit={handleSubmit(counsellorSubmitHandler)}>
                 <div className={`${styles.counsellorProfileImageCard} col-md-12 col-12 col-sm-12 d-flex justify-content-center m-3`}>
-                    <div className={`${styles.profileImageFrame}`}>
-                        <img src={defaultProfileImage} />
+                    <div className={`${styles.profileImageFrame}`} onClick={() => { profileImageRef.current.click() }}>
+                        <img src={profileImage} />
+                        <input type="file" accept='image/jpg' className='d-none' ref={profileImageRef} onChange={profileImageHandler} />
                     </div>
                 </div>
                 <div className={`${styles.counsellorProfileInfo} col-md-12 col-12 col-sm-12 d-flex justify-content-center flex-wrap m-3`}>
@@ -45,9 +69,9 @@ const Counsellor = () => {
                 </div>
                 <div className={`${styles.counsellorIntroductoryVideos} col-md-12 col-12 col-sm-12 d-flex justify-content-center flex-wrap m-3`}>
                     <p className={`${styles.counsellorBioTitle} col-md-12 col-sm-12 col-12 mb-3`}>Counsellor Introductory Videos</p>
-                    
+
                 </div>
-            </div>
+            </form>
         </div>
     )
 }
