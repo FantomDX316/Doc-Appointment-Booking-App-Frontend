@@ -16,6 +16,7 @@ import Therapy from './Pages/Therapy/Therapy';
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { clearReduxStoreData } from "./Features/Slices/Authentication/authenticationSlice";
+import Counsellor from "./Pages/Counsellor/Counsellor";
 // ---------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -65,6 +66,9 @@ function App() {
     }, {
       path: "/therapy",
       element: isUserLoggedIn ? <Therapy /> : <Navigate to="/login" />
+    },{
+      path:"/counsellor",
+      element: isUserLoggedIn ? <Counsellor /> : <Navigate to="/login" />
     }]
   }]);
 

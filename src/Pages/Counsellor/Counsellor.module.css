@@ -1,0 +1,25 @@
+.counsellorContainer{
+    width: 100vw;
+}
+
+.counsellorWrapper{
+    width: 90%;
+    padding: 20px;
+}
+
+.counsellorProfileImageCard{
+    border: 2px solid red;
+    padding: 15px;
+}
+
+.profileImageFrame{
+    border: 2px solid green;
+    width: 16rem;
+    height: 16rem;
+    border-radius: 50%;
+}
+.profileImageFrame img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
