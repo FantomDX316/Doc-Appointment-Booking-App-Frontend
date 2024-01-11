@@ -53,11 +53,11 @@ const Counsellor = () => {
                     {counsellorInfo.map((info) => {
                         return (
                             <>
-                                <div className={`col-md-4 col-4 col-sm-4 text-center`}>
+                                <div className={`col-md-4 col-4 col-sm-4 text-center p-2`}>
                                     <p className='m-2'>{info}</p>
                                 </div>
                                 <div className={`col-md-8 col-8 col-sm-8 text-center`}>
-                                    <select className={`col-md-10 col-sm-10 col-10 m-2`}></select>
+                                    <select className={`${styles.selectElement} col-md-10 col-sm-10 col-10 m-2 p-2`}></select>
                                 </div>
                             </>
                         )
