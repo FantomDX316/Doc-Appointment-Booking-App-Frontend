@@ -17,6 +17,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { clearReduxStoreData } from "./Features/Slices/Authentication/authenticationSlice";
 import Counsellor from "./Pages/Counsellor/Counsellor";
+import Profile from "./Pages/Profile/Profile";
 
 // ---------------------------------------------------------------------------------------------------------------------------------------
 
@@ -70,7 +71,13 @@ function App() {
     },{
       path:"/counsellor",
       element: isUserLoggedIn ? <Counsellor /> : <Navigate to="/login" />
-    }]
+    }
+    ,{
+      path:"/profile",
+      element: isUserLoggedIn ? <Profile /> : <Navigate to="/login" />
+    }
+  
+  ]
   }]);
 
   // ---------------------------------------------------------------------------------------------------------------------------------------
