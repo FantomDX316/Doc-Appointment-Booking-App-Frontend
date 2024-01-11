@@ -1,6 +1,8 @@
 // -----------------------------------------------------------------Imports---------------------------------------------------------------
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import styles from "./Profile.module.css"
+import defaultProfileImage from "../../Assets/Images/defaultProfileImage.jpg"
+
 // ---------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -8,8 +10,17 @@ const Profile = () => {
     // ------------------------------------------------------------------States----------------------------------------------------------------
     // ----------------------------------------------------------------------------------------------------------------------------------------
     // ------------------------------------------------------------------Hooks----------------------------------------------------------------
+    const profileImageRef = useRef();
+
+    const [profileImage, setProfileImage] = useState(defaultProfileImage);
     // ----------------------------------------------------------------------------------------------------------------------------------------
     // ----------------------------------------------------------------Functions----------------------------------------------------------------
+    // profileImageHandler
+    const profileImageHandler = (e) => {
+        let imgFile = e.target.files[0];
+        let imgUrl = URL.createObjectURL(imgFile);
+        setProfileImage(imgUrl);
+    }
     // ----------------------------------------------------------------------------------------------------------------------------------------
     // ----------------------------------------------------------------useEffects---------------------------------------------------------------
     // ----------------------------------------------------------------------------------------------------------------------------------------
@@ -17,7 +28,9 @@ const Profile = () => {
         <div className={`${styles.profileContainer} d-flex justify-content-center`}>
             <div className={`${styles.profileWrapper} d-flex flex-column align-items-center`}>
                 <div className={`${styles.profileTopContent} col-md-12 col-12 col-sm-12 d-flex flex-column align-items-center p-2`}>
-                    <div className={`${styles.profileImageContainer}`}>
+                    <div className={`${styles.profileImageContainer}`} onClick={()=>{profileImageRef.current.click()}}>
+                        <img src={profileImage} />
+                        <input type="file" accept='image/jpg' className='d-none' ref={profileImageRef} onChange={profileImageHandler} />
                     </div>
                     <div className={`${styles.profileUserDetailsContainer} col-md-12 col-12 col-sm-12 d-flex flex-column align-items-center p-2`}>
                         <p className={`${styles.profileUserName}`}>Saksham Kothari</p>

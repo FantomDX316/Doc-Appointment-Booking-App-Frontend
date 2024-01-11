@@ -15,5 +15,12 @@
     width: 16rem;
     height: 16rem;
     border-radius: 50%;
-    border: 5px solid rgb(252, 241, 219);
+    border: 5px solid white;
+    cursor: pointer;
+}
+
+.profileImageContainer img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
 }

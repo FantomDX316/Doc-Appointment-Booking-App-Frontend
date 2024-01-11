@@ -24,6 +24,7 @@ const Counsellor = () => {
     // -----------------------------------------------------------------------------------------------------------------------------------
     // -------------------------------------------------------------Functions-------------------------------------------------------------
 
+    // profileImageHandler -- handler to handle the change in the profile image
     const profileImageHandler = (e) => {
         let imgFile = e.target.files[0];
         let imgUrl = URL.createObjectURL(imgFile);
