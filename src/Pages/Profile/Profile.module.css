@@ -1,0 +1,19 @@
+.profileContainer{
+    width: 100vw;
+}
+
+.profileWrapper{
+    width: 80%;
+    padding: 20px;
+}
+
+.profileTopContent{
+    border: 2px solid red;
+}
+
+.profileImageContainer{
+    width: 16rem;
+    height: 16rem;
+    border-radius: 50%;
+    border: 5px solid rgb(252, 241, 219);
+}
