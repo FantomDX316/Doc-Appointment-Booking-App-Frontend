@@ -15,8 +15,9 @@
     width: 16rem;
     height: 16rem;
     border-radius: 50%;
-    border: 5px solid white;
+    border: 8px solid white;
     cursor: pointer;
+    box-shadow: 2px 2px 5px 3px grey;
 }
 
 .profileImageContainer img {
