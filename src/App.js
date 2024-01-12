@@ -28,12 +28,21 @@ function App() {
   // ---------------------------------------------------------------States------------------------------------------------------------------
   // ---------------------------------------------------------------------------------------------------------------------------------------
   // ---------------------------------------------------------------Hooks------------------------------------------------------------------
-  const { isUserLoggedIn } = useSelector((state) => state?.authentication)
+  const { isUserLoggedIn, loggedInUserData } = useSelector((state) => state?.authentication)
 
   const dispatch = useDispatch()
 
   // ---------------------------------------------------------------------------------------------------------------------------------------
   // -------------------------------------------------------------Functions------------------------------------------------------------------
+
+  // counsellorChecker -- function to check whether the logged in user is a counsellor or not
+  const counsellorChecker = () => {
+    if (loggedInUserData?.decodedData?.role?.toString()?.trim() === "Counsellor") {
+      return true
+    } else {
+      return false
+    }
+  }
 
   // ---------------------------------------------------------------------------------------------------------------------------------------
   // -------------------------------------------------------------useEffect------------------------------------------------------------------
@@ -67,17 +76,17 @@ function App() {
       element: !isUserLoggedIn ? <SignUp /> : <Navigate to="/" />
     }, {
       path: "/therapy",
-      element: isUserLoggedIn ? <Therapy /> : <Navigate to="/login" />
-    },{
-      path:"/counsellor",
-      element: isUserLoggedIn ? <Counsellor /> : <Navigate to="/login" />
+      element: isUserLoggedIn ? (!counsellorChecker()? <Therapy />:<Navigate to="/"/>) : <Navigate to="/login" />
+    }, {
+      path: "/counsellor",
+      element: isUserLoggedIn ? (counsellorChecker()? <Counsellor />:<Navigate to="/"/>) : <Navigate to="/login" />
     }
-    ,{
-      path:"/profile",
+      , {
+      path: "/profile",
       element: isUserLoggedIn ? <Profile /> : <Navigate to="/login" />
     }
-  
-  ]
+
+    ]
   }]);
 
   // ---------------------------------------------------------------------------------------------------------------------------------------
