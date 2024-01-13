@@ -8,7 +8,7 @@ import { authenticationReducer } from "./Slices/Authentication/authenticationSli
 
 // -------------------------------------------------------------------Store Config--------------------------------------------------------------
 
-// persistReducerConfiguration -- configuration for the redux-persist
+// persistReducerConfiguration -- configuration for the redux-persist to transform and store in local storage
 const persistReducerConfiguration = {
     key: "root",
     version: 1,
