@@ -21,7 +21,7 @@ const persistReducerConfiguration = {
     })]
 }
 
-// reducer -- function which holds the redux state and combines all of em 
+// reducer -- function which holds the redux state and combines all of them
 const reducer = combineReducers({
     authentication: authenticationReducer
 });
