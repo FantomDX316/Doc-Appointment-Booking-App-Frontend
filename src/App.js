@@ -18,6 +18,7 @@ import { useEffect } from "react";
 import { clearReduxStoreData } from "./Features/Slices/Authentication/authenticationSlice";
 import Counsellor from "./Pages/Counsellor/Counsellor";
 import Profile from "./Pages/Profile/Profile";
+import Blogs from "./Pages/Blog/Blogs";
 
 // ---------------------------------------------------------------------------------------------------------------------------------------
 
@@ -84,6 +85,10 @@ function App() {
       , {
       path: "/profile",
       element: isUserLoggedIn ? <Profile /> : <Navigate to="/login" />
+    }
+      , {
+      path: "/blogs",
+      element: isUserLoggedIn ? <Blogs/> : <Navigate to="/login" />
     }
 
     ]
