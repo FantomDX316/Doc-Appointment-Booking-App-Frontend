@@ -20,7 +20,7 @@
 
 .leftBlogsCard{
     border: 1px solid rgba(128, 128, 128, 0.373);
-    height: 25vw;
+    height: 22vw;
     padding: 5px;
     border-radius: 5px;
 }
@@ -46,6 +46,10 @@
 .leftBlogsCardMainContentTitle{
     height: 30%;
     overflow: hidden;
+}
+
+.leftBlogsCardMainContentTitle h4{
+    font-size: larger;
 }
 
 
