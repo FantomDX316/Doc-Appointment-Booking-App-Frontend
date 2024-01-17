@@ -1,11 +1,13 @@
+// -----------------------------------------------------------------Imports-------------------------------------------------------------
 import React from 'react'
+import styles from "./BlogCard.module.css"
+// -------------------------------------------------------------------------------------------------------------------------------------
 
 const BlogCard = () => {
     return (
-        <div>
-            <div class="d-flex">
-                <div class="overflow-auto" style={{height:"400px"}}>
-                    <div class="card m-2" style={{maxWidth:"540px"}}>
+            <div class={`${styles.blogCardContainer} d-flex col-md-10`}>
+                <div class={`${styles.blogCard} overflow-auto`}>
+                    <div class="card m-2" >
                         <div class="row g-0">
                             <div class="col-md-4">
                                 <img src="https://mdbcdn.b-cdn.net/img/Photos/Vertical/mountain1.webp" class="img-fluid rounded-start" />
@@ -26,7 +28,6 @@ const BlogCard = () => {
                 </div>
             </div>
 
-        </div>
     )
 }
 
