@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { Provider, useSelector } from 'react-redux';
+import { Provider} from 'react-redux';
 import { persistStore } from 'redux-persist';
 import { store } from './Features/store';
 import { PersistGate } from "redux-persist/integration/react"
