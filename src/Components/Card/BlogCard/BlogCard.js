@@ -9,7 +9,7 @@ const BlogCard = () => {
                 <div class={`${styles.blogCard} overflow-auto`}>
                     <div class="card m-2" >
                         <div class="row g-0">
-                            <div class="col-md-4">
+                            <div class={`${styles.blogImageContainer} col-md-4 col-sm-12 col-12`}>
                                 <img src="https://mdbcdn.b-cdn.net/img/Photos/Vertical/mountain1.webp" class="img-fluid rounded-start" />
                             </div>
                             <div class="col-md-8">
