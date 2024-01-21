@@ -21,6 +21,7 @@ const blogSlice = createSlice({
     initialState,
     reducers: {
         resetBlogState: (state, action) => {
+            state.isBlogCreated = action?.payload;
         },
         clearReduxStoreData: (state, action) => {
 
@@ -55,4 +56,4 @@ const blogSlice = createSlice({
 })
 
 export const blogReducer = blogSlice.reducer;
-export const { } = blogSlice.actions;
+export const { resetBlogState } = blogSlice.actions;

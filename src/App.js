@@ -20,6 +20,7 @@ import Counsellor from "./Pages/Counsellor/Counsellor";
 import Profile from "./Pages/Profile/Profile";
 import Blogs from "./Pages/Blog/Blogs";
 import CreateBlog from "./Pages/Blog/CreateBlog";
+import MyBlogs from "./Pages/Blog/MyBlogs";
 
 // ---------------------------------------------------------------------------------------------------------------------------------------
 
@@ -78,10 +79,10 @@ function App() {
       element: !isUserLoggedIn ? <SignUp /> : <Navigate to="/" />
     }, {
       path: "/therapy",
-      element: isUserLoggedIn ? (!counsellorChecker()? <Therapy />:<Navigate to="/"/>) : <Navigate to="/login" />
+      element: isUserLoggedIn ? (!counsellorChecker() ? <Therapy /> : <Navigate to="/" />) : <Navigate to="/login" />
     }, {
       path: "/counsellor",
-      element: isUserLoggedIn ? (counsellorChecker()? <Counsellor />:<Navigate to="/"/>) : <Navigate to="/login" />
+      element: isUserLoggedIn ? (counsellorChecker() ? <Counsellor /> : <Navigate to="/" />) : <Navigate to="/login" />
     }
       , {
       path: "/profile",
@@ -89,11 +90,15 @@ function App() {
     }
       , {
       path: "/blogs",
-      element: isUserLoggedIn ? <Blogs/> : <Navigate to="/login" />
+      element: isUserLoggedIn ? <Blogs /> : <Navigate to="/login" />
     }
       , {
       path: "/create-blog",
-      element: isUserLoggedIn ? <CreateBlog/> : <Navigate to="/login" />
+      element: isUserLoggedIn ? <CreateBlog /> : <Navigate to="/login" />
+    }
+      , {
+      path: "/my-blogs",
+      element: isUserLoggedIn ? <MyBlogs /> : <Navigate to="/login" />
     }
 
     ]

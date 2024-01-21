@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { createBlog } from '../../../Features/Actions/Blog/blogActions';
+import { resetBlogState } from '../../../Features/Slices/Blog/blogSlice';
 import styles from "./CreateBlogForm.module.css";
 // ------------------------------------------------------------------------------------------------------------------------------------
 
@@ -54,6 +55,8 @@ const CreateBlogForm = () => {
     useEffect(() => {
         if (isBlogCreated) {
             reset();
+            navigate("/my-blogs")
+            dispatch(resetBlogState(false));
         }
     }, [isBlogCreated])
     // -------------------------------------------------------------------------------------------------------------------------------------
