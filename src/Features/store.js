@@ -4,6 +4,7 @@ import { persistReducer } from "redux-persist";
 import { encryptTransform } from "redux-persist-transform-encrypt";
 import storage from "redux-persist/lib/storage";
 import { authenticationReducer } from "./Slices/Authentication/authenticationSlice";
+import { blogReducer } from "./Slices/Blog/blogSlice";
 // --------------------------------------------------------------------------------------------------------------------------------------------
 
 // -------------------------------------------------------------------Store Config--------------------------------------------------------------
@@ -23,12 +24,13 @@ const persistReducerConfiguration = {
 
 // reducer -- function which holds the redux state and combines all of them
 const reducer = combineReducers({
-    authentication: authenticationReducer
+    authentication: authenticationReducer,
+    blog: blogReducer
 });
 
 // rootReducer -- rootReducer is passed as the root reducer and also used for reseting the state
 const rootReducer = (state, action) => {
-    if(action.type == "authentication/clearReduxStoreData"){
+    if (action.type == "authentication/clearReduxStoreData") {
         state = undefined;
         localStorage.clear();
         sessionStorage.clear();

@@ -9,6 +9,7 @@ const initialState = {
     isBlogLoading: false,
     blogData: {},
     errorMessage: "",
+    isBlogCreated: false
 }
 
 // -----------------------------------------------------------------------------------------------------------------------------------
@@ -33,16 +34,21 @@ const blogSlice = createSlice({
                 state.isBlogLoading = true;
                 state.loggedInUserData = {};
                 state.errorMessage = "";
+                state.isBlogCreated = false;
 
             })
             .addCase(createBlog.fulfilled, (state, action) => {
                 state.isBlogLoading = false;
                 state.blogData = action?.payload
+                state.isBlogCreated = true;
+
                 toast.success("Blog Created Successfully")
             })
             .addCase(createBlog.rejected, (state, action) => {
                 state.isBlogLoading = false;
                 state.errorMessage = action?.payload?.message;
+                state.isBlogCreated = false;
+
             })
 
     }

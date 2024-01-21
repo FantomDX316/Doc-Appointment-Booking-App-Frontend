@@ -7,11 +7,11 @@ import { jwtDecode } from "jwt-decode"
 // -------------------------------------------------------------Authentication Actions--------------------------------------------------------
 
 // createBlog -- createBlog action to call the createBlog api and get the respective response
-export const createBlog = createAsyncThunk("blog/createBlog", async ({ payload, role }, { rejectWithValue }) => {
+export const createBlog = createAsyncThunk("blog/createBlog", async (payload, { rejectWithValue }) => {
     try {
-        const response = await instance.post(`${role === "User" ? "/profile" : role === "Counselor" ? "/profile" : ""}`, payload, {
+        const response = await instance.post(`/createBlog`, payload, {
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "multipart/form-data"
             }
         })
 

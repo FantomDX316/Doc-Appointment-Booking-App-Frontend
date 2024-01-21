@@ -1,7 +1,8 @@
 // --------------------------------------------------------------Imports------------------------------------------------------------
 import React from 'react';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { createBlog } from '../../../Features/Actions/Blog/blogActions';
@@ -27,13 +28,20 @@ const CreateBlogForm = () => {
     // dispatch -- hook to dispatch the actions
     const dispatch = useDispatch();
 
+
+    const { isBlogCreated } = useSelector((state) => state.blog)
     // -------------------------------------------------------------------------------------------------------------------------------------
     // --------------------------------------------------------------Functions--------------------------------------------------------------
 
     // createBlogHandler -- handler to call the create blog api
     const createBlogHandler = (data) => {
         try {
-            dispatch(createBlog(data))
+
+            const { blogTitle, blogDescription, blogImage } = data;
+
+            dispatch(createBlog({ title: blogTitle, description: blogDescription, image: blogImage[0] }));
+
+
         } catch (error) {
             toast.error(error.message)
         }
@@ -43,6 +51,11 @@ const CreateBlogForm = () => {
     // -------------------------------------------------------------------------------------------------------------------------------------
     // --------------------------------------------------------------useEffects-----------------------------------------------------------
 
+    useEffect(() => {
+        if (isBlogCreated) {
+            reset();
+        }
+    }, [isBlogCreated])
     // -------------------------------------------------------------------------------------------------------------------------------------
     return (
 
