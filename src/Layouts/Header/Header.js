@@ -8,7 +8,7 @@ import styles from "./Header.module.css"
 
 const Header = () => {
   // -----------------------------------------------------States------------------------------------------------------------
-  const blogArray = [{ path: "", value: "Blogs" },
+  const blogArray = [{ path: "/blogs", value: "Blogs" },
   { path: "", value: "My Blogs" },
   { path: "", value: "Create Blog" }]
   // ------------------------------------------------------------------------------------------------------------------------
