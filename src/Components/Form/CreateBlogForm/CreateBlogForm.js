@@ -3,6 +3,8 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { createBlog } from '../../../Features/Actions/Blog/blogActions';
 import styles from "./CreateBlogForm.module.css";
 // ------------------------------------------------------------------------------------------------------------------------------------
 
@@ -29,8 +31,12 @@ const CreateBlogForm = () => {
     // --------------------------------------------------------------Functions--------------------------------------------------------------
 
     // createBlogHandler -- handler to call the create blog api
-    const createBlogHandler = () => {
-
+    const createBlogHandler = (data) => {
+        try {
+            dispatch(createBlog(data))
+        } catch (error) {
+            toast.error(error.message)
+        }
     }
 
 
