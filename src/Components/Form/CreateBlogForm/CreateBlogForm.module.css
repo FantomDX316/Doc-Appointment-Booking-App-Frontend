@@ -1,0 +1,11 @@
+@media (max-width:768px){
+    .titleContent{
+        flex-direction: column !important;
+    }
+    .descriptionContent{
+        flex-direction: column !important;
+    }
+    .blogImage{
+        flex-direction: column !important;
+    }
+}
