@@ -19,6 +19,7 @@ import { clearReduxStoreData } from "./Features/Slices/Authentication/authentica
 import Counsellor from "./Pages/Counsellor/Counsellor";
 import Profile from "./Pages/Profile/Profile";
 import Blogs from "./Pages/Blog/Blogs";
+import CreateBlog from "./Pages/Blog/CreateBlog";
 
 // ---------------------------------------------------------------------------------------------------------------------------------------
 
@@ -89,6 +90,10 @@ function App() {
       , {
       path: "/blogs",
       element: isUserLoggedIn ? <Blogs/> : <Navigate to="/login" />
+    }
+      , {
+      path: "/create-blog",
+      element: isUserLoggedIn ? <CreateBlog/> : <Navigate to="/login" />
     }
 
     ]
