@@ -93,12 +93,12 @@ const CreateBlogForm = () => {
                                         <p className={`${styles.nameFieldError} col-md-11`}>Blog Title is required.</p>
                                     )}
                                     <div className={`${styles.descriptionContent} col-md-12 col-12 col-sm-12 d-flex m-3`}>
-                                        <div className="input-group-prepend col-md-4 m-2">
+                                        <div className="input-group-prepend col-md-4 col-sm-12 col-12 m-2">
                                             <span className="input-group-text">
                                                 Blog Description
                                             </span>
                                         </div>
-                                        <div className="input-group-prepend  col-md-8 m-2">
+                                        <div className="input-group-prepend  col-md-8 col-sm-12 col-12 m-2">
                                             <textarea type="text" className="form-control" placeholder="Description..." {...register("blogDescription", {
                                                 required: {
                                                     value: true,
@@ -112,12 +112,12 @@ const CreateBlogForm = () => {
                                     )}
 
                                     <div className={`${styles.blogImage} col-md-12 col-12 col-sm-12 d-flex m-3`}>
-                                        <div className="input-group-prepend col-md-4 m-2">
+                                        <div className="input-group-prepend col-md-4 col-sm-12 col-12 m-2">
                                             <span className="input-group-text">
                                                 Blog Image
                                             </span>
                                         </div>
-                                        <div className="input-group-prepend  col-md-8 m-2">
+                                        <div className="input-group-prepend  col-md-8 col-sm-12 col-12 m-2">
                                             <input type="file" className="form-control" accept='image/jpg' {...register("blogImage", {
                                                 required: {
                                                     value: true,
