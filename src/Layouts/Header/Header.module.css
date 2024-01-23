@@ -19,8 +19,17 @@
 }
 
 
+
+
 @media (max-width:768px){
     .navTabs{
+        display: none !important;
+    }
+    .navTab{
+        display: none !important;
+    }
+
+    .loginButton{
         display: none !important;
     }
 }
