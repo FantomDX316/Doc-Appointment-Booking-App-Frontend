@@ -19,6 +19,9 @@
     height: 100%;
 }
 
+.hamburgerMenu{
+    cursor: pointer;
+}
 
 
 

@@ -1,9 +1,15 @@
 .SideBarContainer{
     width: 40vw;
     position: absolute;
-    top:0;
+    top:13vh;
     right: 0;
     border: 2px solid yellow;
     padding: 20px;
     z-index: 3;
+}
+
+@media (min-width:768px){
+    .SideBarContainer{
+      display: none !important;  
+    }
 }

@@ -21,6 +21,7 @@ import Profile from "./Pages/Profile/Profile";
 import Blogs from "./Pages/Blog/Blogs";
 import CreateBlog from "./Pages/Blog/CreateBlog";
 import MyBlogs from "./Pages/Blog/MyBlogs";
+import { CommonStateProvider } from "./Context/CommonStateContext/CommonStateProvider.js";
 
 // ---------------------------------------------------------------------------------------------------------------------------------------
 
@@ -111,9 +112,11 @@ function App() {
   return (
 
     <>
-      <RouterProvider router={appRouter}>
-        <Main />
-      </RouterProvider>
+      <CommonStateProvider>
+        <RouterProvider router={appRouter}>
+          <Main />
+        </RouterProvider>
+      </CommonStateProvider>
       <ToastContainer autoClose={1000} position="top-center" />
     </>
 
