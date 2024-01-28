@@ -1,6 +1,6 @@
 // ---------------------------------------------------------------Imports-----------------------------------------------------------------
 import React, { useState } from 'react';
-import { CommonStateContextObject } from './CommonStateContextObject';
+import { CommonStateContextObject } from './CommonStateContextObject.js';
 // ----------------------------------------------------------------------------------------------------------------------------------------
 
 

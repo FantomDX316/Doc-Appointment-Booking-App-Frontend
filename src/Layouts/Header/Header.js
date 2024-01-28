@@ -7,7 +7,7 @@ import styles from "./Header.module.css"
 import { GiHamburgerMenu, GiCrossMark } from "react-icons/gi";
 import { useEffect } from 'react';
 import { useContext } from 'react';
-import { CommonStateContextObject } from '../../Context/CommonStateContext/CommonStateContextObject';
+import { CommonStateContextObject } from '../../Context/CommonContext/CommonStateContextObject';
 // ------------------------------------------------------------------------------------------------------------------------
 
 const Header = () => {

@@ -1,11 +1,13 @@
 .SideBarContainer{
-    width: 40vw;
+    width: 50vw;
     position: absolute;
     top:13vh;
     right: 0;
-    border: 2px solid yellow;
+    border: 1px solid grey;
     padding: 20px;
     z-index: 3;
+    background-color: white;
+    border-radius: 5px;
 }
 
 @media (min-width:768px){

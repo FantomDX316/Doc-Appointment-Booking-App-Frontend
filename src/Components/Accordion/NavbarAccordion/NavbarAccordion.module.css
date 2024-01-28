@@ -1,0 +1,9 @@
+.accordionContainer ul li{
+    list-style: none;
+}
+
+.accordionWrapper{
+    border: 1px solid grey !important;
+    margin: 20px !important;
+    border-radius: 5px !important;
+}
