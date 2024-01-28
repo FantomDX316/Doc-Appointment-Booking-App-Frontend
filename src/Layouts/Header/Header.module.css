@@ -11,25 +11,35 @@
     width: 100%;
 }
 
-.navLogo{
-    height:100%;
-}
-.navTabs{
-    height:100%;
+.navLogo {
+    height: 100%;
 }
 
+.navTabs {
+    height: 100%;
+}
 
 
 
-@media (max-width:768px){
-    .navTabs{
+
+@media (max-width:768px) {
+    .navTabs {
         display: none !important;
     }
-    .navTab{
+
+    .navTab {
         display: none !important;
     }
 
-    .loginButton{
+
+
+    .loginButton {
+        display: none !important;
+    }
+}
+
+@media (min-width:768px) {
+    .hamburgerMenu {
         display: none !important;
     }
 }
