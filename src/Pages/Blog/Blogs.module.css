@@ -4,3 +4,27 @@
     padding-right: 100px;
     padding-top: 50px;
 }
+
+.blogFilter{
+    padding: 10px;
+    border: 1px solid grey;
+    overflow-x: scroll;
+    
+}
+
+.rightContainer{
+    border: 1px solid grey;
+    border-radius: 15px;
+    height: 100vh;
+    overflow: scroll;
+
+}
+
+.rightContainerTitle{
+    padding: 10px;
+    border-bottom: 1px solid black;
+}
+
+.rightContainerBlog{
+    padding: 10px;
+}

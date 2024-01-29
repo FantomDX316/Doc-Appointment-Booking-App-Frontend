@@ -22,6 +22,7 @@ import Blogs from "./Pages/Blog/Blogs";
 import CreateBlog from "./Pages/Blog/CreateBlog";
 import MyBlogs from "./Pages/Blog/MyBlogs";
 import { CommonStateProvider } from "./Context/CommonContext/CommonStateProvider";
+import BlogDetails from "./Pages/Blog/BlogDetails";
 
 // ---------------------------------------------------------------------------------------------------------------------------------------
 
@@ -100,6 +101,10 @@ function App() {
       , {
       path: "/my-blogs",
       element: isUserLoggedIn ? <MyBlogs /> : <Navigate to="/login" />
+    }
+      , {
+      path: "/blog-details",
+      element: isUserLoggedIn ? <BlogDetails /> : <Navigate to="/login" />
     }
 
     ]
