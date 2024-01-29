@@ -1,3 +1,12 @@
 .blogTitle h1{
     font-weight: bolder;
 }
+
+.blogImage{
+    height:500px;
+}
+
+.blogImage img{
+    width: 100%;
+    height: 100%;
+}
