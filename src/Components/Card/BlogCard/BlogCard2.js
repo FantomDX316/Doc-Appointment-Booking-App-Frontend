@@ -25,7 +25,11 @@ const BlogCard2 = ({ blog }) => {
         />
         <div class="card-body">
           <h5 class="card-title">{blog?.title || "N.A"}</h5>
-          <p class="card-text">{blog?.description || "N.A"}</p>
+          <p class="card-text">
+            {blog?.description.length > 100
+              ? blog?.description.slice(0, 100)
+              : blog?.description || "N.A"}...
+          </p>
         </div>
       </div>
     </div>

@@ -29,7 +29,12 @@ const BlogCard = ({ blog }) => {
             <div class="col-md-8">
               <div class="card-body">
                 <h5 class="card-title">{blog?.title || "N.A"}</h5>
-                <p class="card-text">{blog?.description || "N.A"}</p>
+                <p class="card-text">
+                  {blog?.description.length > 50
+                    ? blog?.description.slice(0, 50)
+                    : blog?.description || "N.A"}
+                  ...
+                </p>
                 <p class="card-text">
                   <small class="text-muted">Last updated 3 minutes ago</small>
                 </p>
