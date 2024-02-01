@@ -153,6 +153,7 @@ const Counsellor = () => {
                       border: "1px solid green",
                       margin: "5px",
                       padding: "2px",
+                      color: "green",
                     }}
                     className="col-md-4 col-sm-4 col-4 text-center"
                   >{`${new Date(date).getDay()}-${new Date(
@@ -184,11 +185,17 @@ const Counsellor = () => {
           >
             Counselor Introductory Videos
           </p>
+          <div className="col-md-10 col-10 col-sm-10 d-flex justify-content-start">
+            <input type="file" accept="video/mp4" />
+          </div>
+          <div
+            className={`${styles.selectElement} col-md-10 col-sm-10 col-10 m-2 p-2  d-flex align-items-center justify-content-center flex-wrap`}
+          ></div>
         </div>
         <div
           className={`${styles.submitCounselorProfile} col-md-12 col-12 col-sm-12 d-flex justify-content-center flex-wrap m-3`}
         >
-            <input type="submit" value="Submit Profile"/>
+          <input type="submit" value="Submit Profile" />
         </div>
       </form>
     </div>
