@@ -178,12 +178,6 @@ const Counsellor = () => {
                 scrollableMonthYearDropdown
                 className={`${styles.selectElement} col-md-10 col-sm-10 col-10 m-2 p-2`}
                 onChange={dateHandler}
-                {...register("availability", {
-                  required: {
-                    value: true,
-                    message: "Availability is Required",
-                  },
-                })}
               />
             </div>
           </>
@@ -235,7 +229,7 @@ const Counsellor = () => {
               },
             })}
           ></textarea>
-          {errors.availability && errors.availability.type === "required" && (
+          {errors.counselorBio && errors.counselorBio.type === "required" && (
             <p className={`${styles.nameFieldError}`}>
               Counselor Bio is required.
             </p>
