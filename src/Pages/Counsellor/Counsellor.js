@@ -51,7 +51,7 @@ const Counsellor = () => {
                     </div>
                 </div>
                 <div className={`${styles.counsellorProfileInfo} col-md-12 col-12 col-sm-12 d-flex justify-content-center flex-wrap m-3`}>
-                    <p className={`${styles.counsellorProfileInfoTitle} col-md-12 col-sm-12 col-12 mb-3`}>Counsellor Info</p>
+                    <p className={`${styles.counsellorProfileInfoTitle} col-md-12 col-sm-12 col-12 mb-3`}>Counselor Info</p>
                     <>
                         <div className={`col-md-4 col-4 col-sm-4 text-center p-2`}>
                             <p className='m-2'>Specialization</p>
@@ -91,11 +91,11 @@ const Counsellor = () => {
                     </>
                 </div>
                 <div className={`${styles.counsellorBio} col-md-12 col-12 col-sm-12 d-flex justify-content-center flex-wrap m-3`}>
-                    <p className={`${styles.counsellorBioTitle} col-md-12 col-sm-12 col-12 mb-3`}>Counsellor Bio</p>
+                    <p className={`${styles.counsellorBioTitle} col-md-12 col-sm-12 col-12 mb-3`}>Counselor Bio</p>
                     <textarea className={`${styles.counsellorBioTextArea} col-md-10 col-sm-10 col-10 p-2`} placeholder="Counsellor Bio"></textarea>
                 </div>
                 <div className={`${styles.counsellorIntroductoryVideos} col-md-12 col-12 col-sm-12 d-flex justify-content-center flex-wrap m-3`}>
-                    <p className={`${styles.counsellorBioTitle} col-md-12 col-sm-12 col-12 mb-3`}>Counsellor Introductory Videos</p>
+                    <p className={`${styles.counsellorBioTitle} col-md-12 col-sm-12 col-12 mb-3`}>Counselor Introductory Videos</p>
 
                 </div>
             </form>
