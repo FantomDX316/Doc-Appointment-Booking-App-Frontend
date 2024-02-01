@@ -42,7 +42,7 @@ function App() {
 
   // counsellorChecker -- function to check whether the logged in user is a counsellor or not
   const counsellorChecker = () => {
-    if (loggedInUserData?.decodedData?.role?.toString()?.trim() === "Counsellor") {
+    if (loggedInUserData?.decodedData?.role?.toString()?.trim() === "Counselor") {
       return true
     } else {
       return false
@@ -83,7 +83,7 @@ function App() {
       path: "/therapy",
       element: isUserLoggedIn ? (!counsellorChecker() ? <Therapy /> : <Navigate to="/" />) : <Navigate to="/login" />
     }, {
-      path: "/counsellor",
+      path: "/counselor",
       element: isUserLoggedIn ? (counsellorChecker() ? <Counsellor /> : <Navigate to="/" />) : <Navigate to="/login" />
     }
       , {
