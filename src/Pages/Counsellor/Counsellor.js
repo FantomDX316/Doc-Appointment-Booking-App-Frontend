@@ -185,6 +185,11 @@ const Counsellor = () => {
             Counselor Introductory Videos
           </p>
         </div>
+        <div
+          className={`${styles.submitCounselorProfile} col-md-12 col-12 col-sm-12 d-flex justify-content-center flex-wrap m-3`}
+        >
+            <input type="submit" value="Submit Profile"/>
+        </div>
       </form>
     </div>
   );
