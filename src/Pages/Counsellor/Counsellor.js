@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { toast } from "react-toastify";
 // -----------------------------------------------------------------------------------------------------------------------------------
 
 const Counsellor = () => {
@@ -16,6 +17,7 @@ const Counsellor = () => {
   const [dateArray, setDateArray] = useState([]);
   // -----------------------------------------------------------------------------------------------------------------------------------
   // ---------------------------------------------------------------Hooks---------------------------------------------------------------
+
   const profileImageRef = useRef();
 
   const {
@@ -34,8 +36,13 @@ const Counsellor = () => {
     setProfileImage(imgUrl);
   };
 
-  // counsellorSubmitHandler -- handler to handle the final submit
-  const counsellorSubmitHandler = () => {};
+  // counselorSubmitHandler -- handler to handle the final submit
+  const counselorSubmitHandler = (data) => {
+    try {
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
 
   //   dateHandler -- handler to handle the date picked by the user
   const dateHandler = (date) => {
@@ -52,7 +59,7 @@ const Counsellor = () => {
     >
       <form
         className={`${styles.counsellorWrapper} d-flex flex-column align-items-center`}
-        onSubmit={handleSubmit(counsellorSubmitHandler)}
+        onSubmit={handleSubmit(counselorSubmitHandler)}
       >
         <div
           className={`${styles.counsellorProfileImageCard} col-md-12 col-12 col-sm-12 d-flex justify-content-center m-3`}
@@ -90,7 +97,19 @@ const Counsellor = () => {
                 type="text"
                 className={`${styles.selectElement} col-md-10 col-sm-10 col-10 m-2 p-2`}
                 placeholder="Specialization"
-              ></input>
+                {...register("specialization", {
+                  required: {
+                    value: true,
+                    message: "Specialization is Required",
+                  },
+                })}
+              />
+              {errors.specialization &&
+                errors.specialization.type === "required" && (
+                  <p className={`${styles.nameFieldError}`}>
+                    Specialization is required.
+                  </p>
+                )}
             </div>
           </>
           <>
@@ -100,6 +119,12 @@ const Counsellor = () => {
             <div className={`col-md-8 col-8 col-sm-8 text-center`}>
               <select
                 className={`${styles.selectElement} col-md-10 col-sm-10 col-10 m-2 p-2`}
+                {...register("experience", {
+                  required: {
+                    value: true,
+                    message: "Experience is Required",
+                  },
+                })}
               >
                 <option value="">Choose</option>
                 {Array(30)
@@ -108,6 +133,11 @@ const Counsellor = () => {
                     return <option value={index + 1}>{index + 1}</option>;
                   })}
               </select>
+              {errors.experience && errors.experience.type === "required" && (
+                <p className={`${styles.nameFieldError}`}>
+                  Experience is required.
+                </p>
+              )}
             </div>
           </>
           <>
@@ -119,7 +149,19 @@ const Counsellor = () => {
                 type="number"
                 className={`${styles.selectElement} col-md-10 col-sm-10 col-10 m-2 p-2`}
                 placeholder="Enter in Rupees"
-              ></input>
+                {...register("consultationFees", {
+                  required: {
+                    value: true,
+                    message: "Consultation Fees is Required",
+                  },
+                })}
+              />
+              {errors.consultationFees &&
+                errors.consultationFees.type === "required" && (
+                  <p className={`${styles.nameFieldError}`}>
+                    Consultation Fees is required.
+                  </p>
+                )}
             </div>
           </>
           <>
@@ -136,13 +178,19 @@ const Counsellor = () => {
                 scrollableMonthYearDropdown
                 className={`${styles.selectElement} col-md-10 col-sm-10 col-10 m-2 p-2`}
                 onChange={dateHandler}
+                {...register("availability", {
+                  required: {
+                    value: true,
+                    message: "Availability is Required",
+                  },
+                })}
               />
             </div>
           </>
           <>
             <div className={`col-md-4 col-4 col-sm-4 text-center p-2`}></div>
             <div
-              className={`col-md-8 col-8 col-sm-8 d-flex justify-content-center`}
+              className={`col-md-8 col-8 col-sm-8 d-flex flex-column align-items-center justify-content-center`}
             >
               <div
                 className={`${styles.selectElement} col-md-10 col-sm-10 col-10 m-2 p-2  d-flex align-items-center justify-content-center flex-wrap`}
@@ -161,6 +209,11 @@ const Counsellor = () => {
                   ).getMonth()}-${new Date(date).getFullYear()}`}</div>
                 ))}
               </div>
+            {errors.availability && errors.availability.type === "required" && (
+              <p className={`${styles.nameFieldError}`}>
+                Availability is required.
+              </p>
+            )}
             </div>
           </>
         </div>
@@ -175,7 +228,18 @@ const Counsellor = () => {
           <textarea
             className={`${styles.counsellorBioTextArea} col-md-10 col-sm-10 col-10 p-2`}
             placeholder="Counsellor Bio"
+            {...register("counselorBio", {
+              required: {
+                value: true,
+                message: "Counselor Bio is Required",
+              },
+            })}
           ></textarea>
+          {errors.availability && errors.availability.type === "required" && (
+            <p className={`${styles.nameFieldError}`}>
+              Counselor Bio is required.
+            </p>
+          )}
         </div>
         <div
           className={`${styles.counsellorIntroductoryVideos} col-md-12 col-12 col-sm-12 d-flex justify-content-center flex-wrap m-3`}

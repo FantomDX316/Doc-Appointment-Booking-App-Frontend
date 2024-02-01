@@ -4,6 +4,7 @@ import BlogCard from "../../Components/Card/BlogCard/BlogCard";
 import BlogCard2 from "../../Components/Card/BlogCard/BlogCard2";
 import styles from "./Blogs.module.css";
 import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
 // -------------------------------------------------------------------------------------------------------------
 
 const Blogs = () => {
