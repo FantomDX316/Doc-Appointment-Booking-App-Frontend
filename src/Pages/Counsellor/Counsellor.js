@@ -12,6 +12,8 @@ const Counsellor = () => {
   // --------------------------------------------------------------States---------------------------------------------------------------
 
   const [profileImage, setProfileImage] = useState(defaultProfileImage);
+  const [newDate, setNewDate] = useState(new Date());
+  const [dateArray, setDateArray] = useState([]);
   // -----------------------------------------------------------------------------------------------------------------------------------
   // ---------------------------------------------------------------Hooks---------------------------------------------------------------
   const profileImageRef = useRef();
@@ -34,6 +36,12 @@ const Counsellor = () => {
 
   // counsellorSubmitHandler -- handler to handle the final submit
   const counsellorSubmitHandler = () => {};
+
+  //   dateHandler -- handler to handle the date picked by the user
+  const dateHandler = (date) => {
+    setDateArray([...dateArray, date.toISOString()]);
+    setNewDate(date);
+  };
   // -----------------------------------------------------------------------------------------------------------------------------------
   // -------------------------------------------------------------useEffects------------------------------------------------------------
   // -----------------------------------------------------------------------------------------------------------------------------------
@@ -127,16 +135,31 @@ const Counsellor = () => {
                 showYearDropdown
                 scrollableMonthYearDropdown
                 className={`${styles.selectElement} col-md-10 col-sm-10 col-10 m-2 p-2`}
+                onChange={dateHandler}
               />
             </div>
           </>
           <>
             <div className={`col-md-4 col-4 col-sm-4 text-center p-2`}></div>
-            <div className={`col-md-8 col-8 col-sm-8 d-flex justify-content-center`}>
+            <div
+              className={`col-md-8 col-8 col-sm-8 d-flex justify-content-center`}
+            >
               <div
-                type="number"
-                className={`${styles.selectElement} col-md-10 col-sm-10 col-10 m-2 p-2`}
-              ></div>
+                className={`${styles.selectElement} col-md-10 col-sm-10 col-10 m-2 p-2  d-flex align-items-center justify-content-center flex-wrap`}
+              >
+                {dateArray.map((date) => (
+                  <div
+                    style={{
+                      border: "1px solid green",
+                      margin: "5px",
+                      padding: "2px",
+                    }}
+                    className="col-md-4 col-sm-4 col-4 text-center"
+                  >{`${new Date(date).getDay()}-${new Date(
+                    date
+                  ).getMonth()}-${new Date(date).getFullYear()}`}</div>
+                ))}
+              </div>
             </div>
           </>
         </div>
