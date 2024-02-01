@@ -6,7 +6,27 @@
     height:500px;
 }
 
+.blogCreatorDetailsWrapper{}
+
 .blogImage img{
     width: 100%;
     height: 100%;
+}
+
+.blogCreatorImageWrapper{
+    padding: 10px;
+}
+
+.blogCreatorImage{
+    width: 5vw;
+    height: 5vw;
+    border-radius: 50%;
+    /* border: 1px solid black; */
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.blogDescWrapper{
+    
 }
