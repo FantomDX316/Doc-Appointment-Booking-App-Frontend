@@ -18,7 +18,8 @@ export const injectStore = (_store) => {
 
 // instance -- instance of the axios in order to do the api call
 export const instance = axios.create({
-    baseURL: `${process.env.REACT_APP_WORKING_ENVIRONMENT === "development" ? `${process.env.REACT_APP_API_DEVELOPMENT_URL}/api/v1` : `${process.env.REACT_APP_API_PRODUCTION_URL}/api/v1`}`
+    // baseURL: `${process.env.REACT_APP_WORKING_ENVIRONMENT === "development" ? `${process.env.REACT_APP_API_DEVELOPMENT_URL}/api/v1` : `${process.env.REACT_APP_API_PRODUCTION_URL}/api/v1`}`
+    baseURL:"http://localhost:3090/api/v1"
 })
 
 
