@@ -5,13 +5,17 @@ import docImg from "../../Assets/Images/homeDocImg.jpg";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { getBlogs } from "../../Features/Actions/Blog/blogActions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { counselorChecker } from "../../utils/utilsIndex";
 // -----------------------------------------------------------------------------------------------------------------------------------
 
 const Home = () => {
   // --------------------------------------------------------------Hooks----------------------------------------------------------------
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const { loggedInUserData } = useSelector((state) => state?.authentication)
+
   // ----------------------------------------------------------------------------------------------------------
   // ------------------------------------------------------Functions-------------------------------------------
 
@@ -55,7 +59,7 @@ const Home = () => {
                 name="See More"
                 value="See More"
                 onClick={() => {
-                  navigate("/therapy");
+                  counselorChecker(loggedInUserData) ? navigate("/profile") : navigate("/therapy");
                 }}
               />
             </div>
