@@ -4,12 +4,14 @@ import styles from "./Therapy.module.css"
 import { IoMdArrowRoundBack } from "react-icons/io";
 import dummyCardImg from "../../Assets/Images/cardImg.jpg"
 import { IoChevronForwardCircleSharp } from "react-icons/io5";
+import { useNavigate } from 'react-router-dom';
 // -----------------------------------------------------------------------------------------------------------------------------------
 
 const Therapy = () => {
     // -------------------------------------------------------------States----------------------------------------------------------------
     // -----------------------------------------------------------------------------------------------------------------------------------
     // -------------------------------------------------------------Hooks----------------------------------------------------------------
+    const navigate = useNavigate();
     // -----------------------------------------------------------------------------------------------------------------------------------
     // -------------------------------------------------------------Functions----------------------------------------------------------------
     // -----------------------------------------------------------------------------------------------------------------------------------
@@ -44,7 +46,7 @@ const Therapy = () => {
                                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis eveniet fuga quia illo cum
                                             </div>
                                         </div>
-                                        <div className={`${styles.therapyCategorySeeMoreBtn}`}>
+                                        <div className={`${styles.therapyCategorySeeMoreBtn}`} onClick={() => { navigate("/counselors-list") }}>
                                             <IoChevronForwardCircleSharp />
                                         </div>
                                     </div>
