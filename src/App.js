@@ -42,7 +42,7 @@ function App() {
 
   // counsellorChecker -- function to check whether the logged in user is a counsellor or not
   const counsellorChecker = () => {
-    if (loggedInUserData?.decodedData?.role?.toString()?.trim() === "Counselor") {
+    if (loggedInUserData?.decodedData?.role?.toString()?.trim() === "Counsellor") {
       return true
     } else {
       return false
