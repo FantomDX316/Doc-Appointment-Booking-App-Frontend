@@ -12,7 +12,7 @@ const CounselorCard = () => {
         <h2 className={`${styles.counselorCardTitle}`}>Shubham Sharma</h2>
         <p style={{ color: "black" }}>
           Lorem ipsum dolor sit amet consectetur Lorem, ipsum....
-          <div className="col-md-12 col-sm-12 col-12 d-flex flex-wrap mt-3">
+          <div className="col-md-12 col-sm-12 col-12 d-flex flex-wrap mt-2 mb-2">
             <>
               <div className="col-md-5 col-sm-5 col-5">Experience</div>
               <div className="col-md-1 col-sm-1 col-1">:</div>

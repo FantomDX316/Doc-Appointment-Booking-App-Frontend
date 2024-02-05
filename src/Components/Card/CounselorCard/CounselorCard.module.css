@@ -51,12 +51,13 @@
   .card .bookBtn {
     inset: auto auto 40px 30px;
     text-decoration: none;
-    border: 1px solid white;
+    border: 2px solid white;
     border-radius: 10px;
     padding:5px;
     color: white !important;
     font-weight: bold;
     letter-spacing: 2px;
+
   }
   .card:hover h2 {
     inset: auto auto 220px 30px;
