@@ -16,17 +16,17 @@ const CounselorCard = () => {
             <>
               <div className="col-md-5 col-sm-5 col-5">Experience</div>
               <div className="col-md-1 col-sm-1 col-1">:</div>
-              <div className="col-md-6 col-sm-6 col-6 text-muted">7 years</div>
+              <div className="col-md-6 col-sm-6 col-6 text-danger">7 years</div>
             </>
             <>
               <div className="col-md-5 col-sm-5 col-5">Language</div>
               <div className="col-md-1 col-sm-1 col-1">:</div>
-              <div className="col-md-6 col-sm-6 col-6 text-muted">English</div>
+              <div className="col-md-6 col-sm-6 col-6 text-danger">English</div>
             </>
             <>
               <div className="col-md-5 col-sm-5 col-5">Specialization</div>
               <div className="col-md-1 col-sm-1 col-1">:</div>
-              <div className="col-md-6 col-sm-6 col-6 text-muted">Cancer</div>
+              <div className="col-md-6 col-sm-6 col-6 text-danger">Cancer</div>
             </>
           </div>
         </p>
