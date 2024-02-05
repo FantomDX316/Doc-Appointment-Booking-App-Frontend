@@ -11,17 +11,28 @@ const CounselorCard = () => {
       <div className="card-content">
         <h2 className={`${styles.counselorCardTitle}`}>Shubham Sharma</h2>
         <p style={{ color: "black" }}>
-          Experienced dev
-          <ul className="col-md-12 col-12 col-sm-12">
-            <li>Experience</li>
-            <li>hello</li>
-            <li>hello</li>
-            <li>hello</li>
-          </ul>
+          Lorem ipsum dolor sit amet consectetur Lorem, ipsum....
+          <div className="col-md-12 col-sm-12 col-12 d-flex flex-wrap mt-3">
+            <>
+              <div className="col-md-5 col-sm-5 col-5">Experience</div>
+              <div className="col-md-1 col-sm-1 col-1">:</div>
+              <div className="col-md-6 col-sm-6 col-6 text-muted">7 years</div>
+            </>
+            <>
+              <div className="col-md-5 col-sm-5 col-5">Language</div>
+              <div className="col-md-1 col-sm-1 col-1">:</div>
+              <div className="col-md-6 col-sm-6 col-6 text-muted">English</div>
+            </>
+            <>
+              <div className="col-md-5 col-sm-5 col-5">Specialization</div>
+              <div className="col-md-1 col-sm-1 col-1">:</div>
+              <div className="col-md-6 col-sm-6 col-6 text-muted">Cancer</div>
+            </>
+          </div>
         </p>
-        <a href="#" className="button" style={{ color: "blue" }}>
+        <div className={`${styles.bookBtn} text-center`} style={{ color: "blue" }}>
           Book Now -
-        </a>
+        </div>
       </div>
     </div>
   );
