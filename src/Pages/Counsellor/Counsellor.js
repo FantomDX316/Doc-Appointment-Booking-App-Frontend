@@ -20,8 +20,8 @@ const Counsellor = () => {
   const [profileImage, setProfileImage] = useState(defaultProfileImage);
   const [newDate, setNewDate] = useState(new Date());
   const [dateArray, setDateArray] = useState([]);
-  const [profileImageData, setProfileImageData] = useState("")
-  const [videoData, setVideoData] = useState([])
+  const [profileImageData, setProfileImageData] = useState("");
+  const [videoData, setVideoData] = useState([]);
   // -----------------------------------------------------------------------------------------------------------------------------------
   // ---------------------------------------------------------------Hooks---------------------------------------------------------------
 
@@ -59,11 +59,10 @@ const Counsellor = () => {
   // counselorSubmitHandler -- handler to handle the final submit
   const counselorSubmitHandler = (data) => {
     try {
-
       const formData = new FormData();
-      let payload = JSON.stringify({ ...data, availability: dateArray })
+      let payload = JSON.stringify({ ...data, availability: dateArray });
 
-      console.log(payload)
+      console.log(payload);
 
       formData.append("payload", payload);
       formData.append("image", profileImageData);
@@ -86,7 +85,7 @@ const Counsellor = () => {
       navigate("/");
       dispatch(resetCounselorState(false));
     }
-  }, [isCounselorUpdated])
+  }, [isCounselorUpdated]);
 
   // -----------------------------------------------------------------------------------------------------------------------------------
 
@@ -98,7 +97,10 @@ const Counsellor = () => {
         className={`${styles.counsellorWrapper} d-flex flex-column align-items-center`}
         onSubmit={handleSubmit(counselorSubmitHandler)}
       >
-        <h5><span style={{ color: "red" }}>Note! </span> Please Update the Profile to Continue Using our Services</h5>
+        <h5>
+          <span style={{ color: "red" }}>Note! </span> Please Update the Profile
+          to Continue Using our Services
+        </h5>
         <div
           className={`${styles.counsellorProfileImageCard} col-md-12 col-12 col-sm-12 d-flex justify-content-center m-3`}
         >
@@ -262,16 +264,17 @@ const Counsellor = () => {
                       color: "green",
                     }}
                     className="col-md-4 col-sm-4 col-4 text-center"
-                  >{`${new Date(date).getDate()}-${new Date(
-                    date
-                  ).getMonth() + 1}-${new Date(date).getFullYear()}`}</div>
+                  >{`${new Date(date).getDate()}-${
+                    new Date(date).getMonth() + 1
+                  }-${new Date(date).getFullYear()}`}</div>
                 ))}
               </div>
-              {errors.availability && errors.availability.type === "required" && (
-                <p className={`${styles.nameFieldError}`}>
-                  Availability is required.
-                </p>
-              )}
+              {errors.availability &&
+                errors.availability.type === "required" && (
+                  <p className={`${styles.nameFieldError}`}>
+                    Availability is required.
+                  </p>
+                )}
             </div>
           </>
         </div>
