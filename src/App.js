@@ -25,6 +25,7 @@ import { CommonStateProvider } from "./Context/CommonContext/CommonStateProvider
 import BlogDetails from "./Pages/Blog/BlogDetails";
 import { counselorChecker, isCounselorProfileUpdated } from "./utils/utilsIndex.js";
 import CounselorsList from "./Pages/Counsellor/CounselorsList";
+import CounselorProfile from "./Pages/Counsellor/CounselorProfile";
 
 // ---------------------------------------------------------------------------------------------------------------------------------------
 
@@ -83,6 +84,10 @@ function App() {
     {
       path: "/counselors-list",
       element: isUserLoggedIn ? !counselorChecker(loggedInUserData) ? <CounselorsList /> : <Navigate to="/" /> : <Navigate to="/login" />
+    },
+    {
+      path: "/counselor-profile",
+      element: isUserLoggedIn ? !counselorChecker(loggedInUserData) ? <CounselorProfile /> : <Navigate to="/" /> : <Navigate to="/login" />
     }
       , {
       path: "/profile",

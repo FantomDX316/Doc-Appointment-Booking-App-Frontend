@@ -14,12 +14,10 @@ const CounselorCard = () => {
                     Shubham Sharma
                 </h2>
                 <p style={{ color: "black" }}>
-                    Experienced dev
+                    Lorem ipsum dolor sit amet Lorem, ipsum. Lorem ipsum dolor sit amet.lorem10 Lorem ipsum dolor sit amet consectetur 
                     <ul>
-                        <li>hello</li>
-                        <li>hello</li>
-                        <li>hello</li>
-                        <li>hello</li>
+                        <li>Experience : 2 years</li>
+                        <li>Language : English</li>
                     </ul>
                 </p>
                 <a href="#" className="button" style={{color:"blue"}}>
