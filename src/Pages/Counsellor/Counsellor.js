@@ -7,6 +7,11 @@ import { useForm } from "react-hook-form";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { toast } from "react-toastify";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { updateCounselor } from "../../Features/Actions/Counselor/counselorActions";
+import { useNavigate } from "react-router-dom";
+import { resetCounselorState } from "../../Features/Slices/Counselor/counselorSlice";
 // -----------------------------------------------------------------------------------------------------------------------------------
 
 const Counsellor = () => {
@@ -15,10 +20,18 @@ const Counsellor = () => {
   const [profileImage, setProfileImage] = useState(defaultProfileImage);
   const [newDate, setNewDate] = useState(new Date());
   const [dateArray, setDateArray] = useState([]);
+  const [profileImageData, setProfileImageData] = useState("")
+  const [videoData, setVideoData] = useState([])
   // -----------------------------------------------------------------------------------------------------------------------------------
   // ---------------------------------------------------------------Hooks---------------------------------------------------------------
 
   const profileImageRef = useRef();
+
+  const dispatch = useDispatch();
+
+  const { isCounselorUpdated } = useSelector((state) => state?.counselor);
+
+  const navigate = useNavigate();
 
   const {
     register,
@@ -32,13 +45,30 @@ const Counsellor = () => {
   // profileImageHandler -- handler to handle the change in the profile image
   const profileImageHandler = (e) => {
     let imgFile = e.target.files[0];
+    setProfileImageData(imgFile);
     let imgUrl = URL.createObjectURL(imgFile);
     setProfileImage(imgUrl);
+  };
+
+  // introVideoHandler -- handler to handle the change in the videos
+  const introVideoHandler = (e) => {
+    let videoFile = e.target.files[0];
+    setVideoData([...videoData, videoFile]);
   };
 
   // counselorSubmitHandler -- handler to handle the final submit
   const counselorSubmitHandler = (data) => {
     try {
+
+      const formData = new FormData();
+      let payload = JSON.stringify({ ...data, availability: dateArray })
+
+      console.log(payload)
+
+      formData.append("payload", payload);
+      formData.append("image", profileImageData);
+
+      dispatch(updateCounselor(formData));
     } catch (error) {
       toast.error(error.message);
     }
@@ -51,6 +81,13 @@ const Counsellor = () => {
   };
   // -----------------------------------------------------------------------------------------------------------------------------------
   // -------------------------------------------------------------useEffects------------------------------------------------------------
+  useEffect(() => {
+    if (isCounselorUpdated) {
+      navigate("/");
+      dispatch(resetCounselorState(false));
+    }
+  }, [isCounselorUpdated])
+
   // -----------------------------------------------------------------------------------------------------------------------------------
 
   return (
@@ -61,6 +98,7 @@ const Counsellor = () => {
         className={`${styles.counsellorWrapper} d-flex flex-column align-items-center`}
         onSubmit={handleSubmit(counselorSubmitHandler)}
       >
+        <h5><span style={{ color: "red" }}>Note! </span> Please Update the Profile to Continue Using our Services</h5>
         <div
           className={`${styles.counsellorProfileImageCard} col-md-12 col-12 col-sm-12 d-flex justify-content-center m-3`}
         >
@@ -142,6 +180,31 @@ const Counsellor = () => {
           </>
           <>
             <div className={`col-md-4 col-4 col-sm-4 text-center p-2`}>
+              <p className="m-2">Language</p>
+            </div>
+            <div className={`col-md-8 col-8 col-sm-8 text-center`}>
+              <select
+                className={`${styles.selectElement} col-md-10 col-sm-10 col-10 m-2 p-2`}
+                {...register("language", {
+                  required: {
+                    value: true,
+                    message: "Language is Required",
+                  },
+                })}
+              >
+                <option value="">Choose</option>
+                <option value={"English"}>English</option>
+                <option value={"Hindi"}>Hindi</option>
+              </select>
+              {errors.language && errors.language.type === "required" && (
+                <p className={`${styles.nameFieldError}`}>
+                  Language is required.
+                </p>
+              )}
+            </div>
+          </>
+          <>
+            <div className={`col-md-4 col-4 col-sm-4 text-center p-2`}>
               <p className="m-2">Consultation Fees</p>
             </div>
             <div className={`col-md-8 col-8 col-sm-8 text-center`}>
@@ -178,6 +241,7 @@ const Counsellor = () => {
                 scrollableMonthYearDropdown
                 className={`${styles.selectElement} col-md-10 col-sm-10 col-10 m-2 p-2`}
                 onChange={dateHandler}
+                selected={newDate}
               />
             </div>
           </>
@@ -198,16 +262,16 @@ const Counsellor = () => {
                       color: "green",
                     }}
                     className="col-md-4 col-sm-4 col-4 text-center"
-                  >{`${new Date(date).getDay()}-${new Date(
+                  >{`${new Date(date).getDate()}-${new Date(
                     date
-                  ).getMonth()}-${new Date(date).getFullYear()}`}</div>
+                  ).getMonth() + 1}-${new Date(date).getFullYear()}`}</div>
                 ))}
               </div>
-            {errors.availability && errors.availability.type === "required" && (
-              <p className={`${styles.nameFieldError}`}>
-                Availability is required.
-              </p>
-            )}
+              {errors.availability && errors.availability.type === "required" && (
+                <p className={`${styles.nameFieldError}`}>
+                  Availability is required.
+                </p>
+              )}
             </div>
           </>
         </div>
@@ -222,20 +286,20 @@ const Counsellor = () => {
           <textarea
             className={`${styles.counsellorBioTextArea} col-md-10 col-sm-10 col-10 p-2`}
             placeholder="Counsellor Bio"
-            {...register("counselorBio", {
+            {...register("bio", {
               required: {
                 value: true,
                 message: "Counselor Bio is Required",
               },
             })}
           ></textarea>
-          {errors.counselorBio && errors.counselorBio.type === "required" && (
+          {errors.bio && errors.bio.type === "required" && (
             <p className={`${styles.nameFieldError}`}>
               Counselor Bio is required.
             </p>
           )}
         </div>
-        <div
+        {/* <div
           className={`${styles.counsellorIntroductoryVideos} col-md-12 col-12 col-sm-12 d-flex justify-content-center flex-wrap m-3`}
         >
           <p
@@ -244,12 +308,18 @@ const Counsellor = () => {
             Counselor Introductory Videos
           </p>
           <div className="col-md-10 col-10 col-sm-10 d-flex justify-content-start">
-            <input type="file" accept="video/mp4" />
+            <input type="file" accept="video/mp4" onChange={introVideoHandler} />
           </div>
           <div
-            className={`${styles.selectElement} col-md-10 col-sm-10 col-10 m-2 p-2  d-flex align-items-center justify-content-center flex-wrap`}
-          ></div>
-        </div>
+            className={`${styles.selectElement} col-md-10 col-sm-10 col-10 m-2 p-2  gap-3 d-flex align-items-center justify-content-center flex-wrap`}
+          >
+            {
+              videoData.map((video, index) => {
+                return <div className={`${styles.introVideoElement} p-1 col-md-4 col-sm-12 col-12 text-center`}>{`Video ${index + 1} - ${video?.name.length > 10 ? video?.name.slice(0, 10) : video?.name}...`}</div>
+              })
+            }
+          </div>
+        </div> */}
         <div
           className={`${styles.submitCounselorProfile} col-md-12 col-12 col-sm-12 d-flex justify-content-center flex-wrap m-3`}
         >

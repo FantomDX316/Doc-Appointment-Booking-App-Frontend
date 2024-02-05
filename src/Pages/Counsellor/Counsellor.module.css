@@ -86,3 +86,7 @@
 .nameFieldError{
     color:red;
 }
+
+.introVideoElement{
+    border: 1px solid grey;
+}

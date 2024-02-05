@@ -5,6 +5,7 @@ import { encryptTransform } from "redux-persist-transform-encrypt";
 import storage from "redux-persist/lib/storage";
 import { authenticationReducer } from "./Slices/Authentication/authenticationSlice";
 import { blogReducer } from "./Slices/Blog/blogSlice";
+import { counselorReducer } from "./Slices/Counselor/counselorSlice";
 // --------------------------------------------------------------------------------------------------------------------------------------------
 
 // -------------------------------------------------------------------Store Config--------------------------------------------------------------
@@ -25,7 +26,8 @@ const persistReducerConfiguration = {
 // reducer -- function which holds the redux state and combines all of them
 const reducer = combineReducers({
     authentication: authenticationReducer,
-    blog: blogReducer
+    blog: blogReducer,
+    counselor:counselorReducer
 });
 
 // rootReducer -- rootReducer is passed as the root reducer and also used for reseting the state
@@ -43,6 +45,10 @@ const persistedReducer = persistReducer(persistReducerConfiguration, rootReducer
 
 // store -- the actual redux store configuration
 export const store = configureStore({
-    reducer: persistedReducer
+    reducer: persistedReducer,
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({
+            serializableCheck: false,
+        }),
 })
 // ------------------------------------------------------------------------------------------------------------------------------------------

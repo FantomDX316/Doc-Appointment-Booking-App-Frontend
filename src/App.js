@@ -23,6 +23,8 @@ import CreateBlog from "./Pages/Blog/CreateBlog";
 import MyBlogs from "./Pages/Blog/MyBlogs";
 import { CommonStateProvider } from "./Context/CommonContext/CommonStateProvider";
 import BlogDetails from "./Pages/Blog/BlogDetails";
+import { counselorChecker, isCounselorProfileUpdated } from "./utils/utilsIndex.js";
+import CounselorsList from "./Pages/Counsellor/CounselorsList";
 
 // ---------------------------------------------------------------------------------------------------------------------------------------
 
@@ -40,14 +42,6 @@ function App() {
   // ---------------------------------------------------------------------------------------------------------------------------------------
   // -------------------------------------------------------------Functions------------------------------------------------------------------
 
-  // counsellorChecker -- function to check whether the logged in user is a counsellor or not
-  const counsellorChecker = () => {
-    if (loggedInUserData?.decodedData?.role?.toString()?.trim() === "Counselor") {
-      return true
-    } else {
-      return false
-    }
-  }
 
   // ---------------------------------------------------------------------------------------------------------------------------------------
   // -------------------------------------------------------------useEffect------------------------------------------------------------------
@@ -81,30 +75,34 @@ function App() {
       element: !isUserLoggedIn ? <SignUp /> : <Navigate to="/" />
     }, {
       path: "/therapy",
-      element: isUserLoggedIn ? (!counsellorChecker() ? <Therapy /> : <Navigate to="/" />) : <Navigate to="/login" />
+      element: isUserLoggedIn ? !counselorChecker(loggedInUserData) ? <Therapy /> : <Navigate to="/" /> : <Navigate to="/login" />
     }, {
       path: "/counselor",
-      element: isUserLoggedIn ? (counsellorChecker() ? <Counsellor /> : <Navigate to="/" />) : <Navigate to="/login" />
+      element: isUserLoggedIn ? counselorChecker(loggedInUserData) ? isCounselorProfileUpdated(loggedInUserData) ? <Profile /> : <Counsellor /> : <Navigate to="/" /> : <Navigate to="/login" />
+    },
+    {
+      path: "/counselors-list",
+      element: isUserLoggedIn ? !counselorChecker(loggedInUserData) ? <CounselorsList /> : <Navigate to="/" /> : <Navigate to="/login" />
     }
       , {
       path: "/profile",
-      element: isUserLoggedIn ? <Profile /> : <Navigate to="/login" />
+      element: isUserLoggedIn ? counselorChecker(loggedInUserData) ? isCounselorProfileUpdated(loggedInUserData) ? <Profile /> : <Counsellor /> : <Profile /> : <Navigate to="/login" />
     }
       , {
       path: "/blogs",
-      element: isUserLoggedIn ? <Blogs /> : <Navigate to="/login" />
+      element: isUserLoggedIn ? counselorChecker(loggedInUserData) ? isCounselorProfileUpdated(loggedInUserData) ? <Blogs /> : <Counsellor /> : <Blogs /> : <Navigate to="/login" />
     }
       , {
       path: "/create-blog",
-      element: isUserLoggedIn ? <CreateBlog /> : <Navigate to="/login" />
+      element: isUserLoggedIn ? counselorChecker(loggedInUserData) ? isCounselorProfileUpdated(loggedInUserData) ? <CreateBlog /> : <Counsellor /> : <Navigate to="/" /> : <Navigate to="/login" />
     }
       , {
       path: "/my-blogs",
-      element: isUserLoggedIn ? <MyBlogs /> : <Navigate to="/login" />
+      element: isUserLoggedIn ? counselorChecker(loggedInUserData) ? isCounselorProfileUpdated(loggedInUserData) ? <MyBlogs /> : <Counsellor /> : <Navigate to="/" /> : <Navigate to="/login" />
     }
       , {
       path: "/blog-details",
-      element: isUserLoggedIn ? <BlogDetails /> : <Navigate to="/login" />
+      element: isUserLoggedIn ? counselorChecker(loggedInUserData) ? isCounselorProfileUpdated(loggedInUserData) ? <BlogDetails /> : <Counsellor /> : <BlogDetails /> : <Navigate to="/login" />
     }
 
     ]
