@@ -8,14 +8,15 @@ import { GiHamburgerMenu, GiCrossMark } from "react-icons/gi";
 import { useEffect } from "react";
 import { useContext } from "react";
 import { CommonStateContextObject } from "../../Context/CommonContext/CommonStateContextObject";
+import { counselorChecker } from "../../utils/utilsIndex";
 // ------------------------------------------------------------------------------------------------------------------------
 
 const Header = () => {
   // -----------------------------------------------------States------------------------------------------------------------
   const blogArray = [
-    { path: "/blogs", value: "Blogs" },
-    { path: "/my-blogs", value: "My Blogs" },
-    { path: "/create-blog", value: "Create Blog" },
+    { path: "/blogs", value: "Blogs", counselor: false },
+    { path: "/my-blogs", value: "My Blogs", counselor: true },
+    { path: "/create-blog", value: "Create Blog", counselor: true },
   ];
 
   const [openMenu, setOpenMenu] = useState(false);
@@ -25,7 +26,9 @@ const Header = () => {
 
   const location = useLocation();
 
-  const { isUserLoggedIn } = useSelector((state) => state?.authentication);
+  const { isUserLoggedIn, loggedInUserData } = useSelector(
+    (state) => state?.authentication
+  );
 
   const dispatch = useDispatch();
 
@@ -155,20 +158,23 @@ const Header = () => {
                 {blogArray.map((blogItem, index) => {
                   return (
                     <>
-                      <li
-                        style={{
-                          borderBottom: `${
-                            index != blogArray.length - 1
-                              ? "1px solid #e6e6fa"
-                              : ""
-                          }`,
-                          textAlign: "center",
-                        }}
-                      >
-                        <Link className="dropdown-item" to={blogItem?.path}>
-                          {blogItem?.value}
-                        </Link>
-                      </li>
+                      {counselorChecker(loggedInUserData) ===
+                        blogItem.counselor && (
+                        <li
+                          style={{
+                            // borderBottom: `${
+                            //   index != blogArray.length - 1
+                            //     ? "1px solid #e6e6fa"
+                            //     : ""
+                            // }`,
+                            textAlign: "center",
+                          }}
+                        >
+                          <Link className="dropdown-item" to={blogItem?.path}>
+                            {blogItem?.value}
+                          </Link>
+                        </li>
+                      )}
                     </>
                   );
                 })}
