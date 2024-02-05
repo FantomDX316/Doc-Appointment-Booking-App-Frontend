@@ -22,6 +22,7 @@ import Blogs from "./Pages/Blog/Blogs";
 import CreateBlog from "./Pages/Blog/CreateBlog";
 import MyBlogs from "./Pages/Blog/MyBlogs";
 import { CommonStateProvider } from "./Context/CommonContext/CommonStateProvider";
+import BlogDetails from "./Pages/Blog/BlogDetails";
 
 // ---------------------------------------------------------------------------------------------------------------------------------------
 
@@ -41,7 +42,7 @@ function App() {
 
   // counsellorChecker -- function to check whether the logged in user is a counsellor or not
   const counsellorChecker = () => {
-    if (loggedInUserData?.decodedData?.role?.toString()?.trim() === "Counsellor") {
+    if (loggedInUserData?.decodedData?.role?.toString()?.trim() === "Counselor") {
       return true
     } else {
       return false
@@ -82,7 +83,7 @@ function App() {
       path: "/therapy",
       element: isUserLoggedIn ? (!counsellorChecker() ? <Therapy /> : <Navigate to="/" />) : <Navigate to="/login" />
     }, {
-      path: "/counsellor",
+      path: "/counselor",
       element: isUserLoggedIn ? (counsellorChecker() ? <Counsellor /> : <Navigate to="/" />) : <Navigate to="/login" />
     }
       , {
@@ -100,6 +101,10 @@ function App() {
       , {
       path: "/my-blogs",
       element: isUserLoggedIn ? <MyBlogs /> : <Navigate to="/login" />
+    }
+      , {
+      path: "/blog-details",
+      element: isUserLoggedIn ? <BlogDetails /> : <Navigate to="/login" />
     }
 
     ]

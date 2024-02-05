@@ -2,3 +2,7 @@
     object-fit: contain;
     height: 100%;
 }
+
+.blogCardContainer{
+    cursor: pointer;
+}
