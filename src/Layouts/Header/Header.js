@@ -23,7 +23,6 @@ const Header = () => {
     },
   ];
 
-  const [openMenu, setOpenMenu] = useState(false);
   // ------------------------------------------------------------------------------------------------------------------------
   // -----------------------------------------------------Hooks------------------------------------------------------------
   const navigate = useNavigate();
@@ -36,7 +35,9 @@ const Header = () => {
 
   const dispatch = useDispatch();
 
-  const { changeNavbarState } = useContext(CommonStateContextObject);
+  const { changeNavbarState, changeMenu, openMenu } = useContext(
+    CommonStateContextObject
+  );
 
   // ------------------------------------------------------------------------------------------------------------------------
   // -----------------------------------------------------Functions------------------------------------------------------------
@@ -87,7 +88,7 @@ const Header = () => {
           <div
             className={`${styles.hamburgerMenu} col-md-7 col-sm-7 col-7 d-flex flex-row-reverse`}
             onClick={() => {
-              setOpenMenu(!openMenu);
+              changeMenu();
               changeNavbarState();
             }}
           >
@@ -97,7 +98,7 @@ const Header = () => {
           <div
             className={`${styles.hamburgerMenu} col-md-7 col-sm-7 col-7 d-flex flex-row-reverse`}
             onClick={() => {
-              setOpenMenu(!openMenu);
+              changeMenu();
               changeNavbarState();
             }}
           >
@@ -166,13 +167,15 @@ const Header = () => {
                         loggedInUserData.decodedData.role
                       ) && (
                         <li
-                          style={{
-                            // borderBottom: `${
-                            //   index != blogArray.length - 1
-                            //     ? "1px solid #e6e6fa"
-                            //     : ""
-                            // }`,
-                          }}
+                          style={
+                            {
+                              // borderBottom: `${
+                              //   index != blogArray.length - 1
+                              //     ? "1px solid #e6e6fa"
+                              //     : ""
+                              // }`,
+                            }
+                          }
                         >
                           <Link className="dropdown-item" to={blogItem?.path}>
                             {blogItem?.value}
@@ -190,7 +193,7 @@ const Header = () => {
             onClick={() => {
               navigate("/profile");
             }}
-            style={{cursor:"pointer"}}
+            style={{ cursor: "pointer" }}
           >
             Profile
           </div>
