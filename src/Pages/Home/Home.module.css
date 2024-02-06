@@ -1,7 +1,7 @@
 .homeContainer {
     width: 100vw;
-    height: 90vh;
     background-color: rgba(255, 253, 249, 0.818);
+    padding: 2vw;
 }
 
 .homeWrapper {

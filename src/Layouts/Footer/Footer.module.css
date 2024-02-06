@@ -1,28 +1,28 @@
-.footer{
-    width:100vw;
+.footer {
+    width: 100vw;
     height: 70vh;
     background-color: black;
+    overflow: hidden;
 }
 
-.footerContent{
+.footerContent {
     height: 100%;
     width: 100%;
 }
 
-.footerSocialLinks{
-}
+.footerSocialLinks {}
 
-.footerTabs{
-}
-.footerTabsContent{
+.footerTabs {}
+
+.footerTabsContent {
     height: 100%;
 }
 
-.footerSocialLinksContent{
+.footerSocialLinksContent {
     height: 100%;
 }
 
-.sendMailInput{
+.sendMailInput {
     height: 100%;
     border-top-right-radius: 0px;
     border-top-left-radius: 20px;
@@ -30,10 +30,46 @@
     border-bottom-right-radius: 0px;
     padding: 10px;
 }
-.mailButton button{
+
+.mailButton button {
     height: 100%;
     border-top-right-radius: 20px;
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 20px;
+}
+
+@media (max-width:768px) {
+    .footerEmailContent {
+        text-align: center;
+    }
+
+    .footerEmailContent strong {
+        font-size: large !important;
+    }
+
+    .footerMailBox {
+        display: flex !important;
+        justify-content: center !important;
+    }
+
+    .footerSocialLinks div {
+        text-align: center;
+    }
+
+    .footerSocialLinks div strong {
+        font-size: large !important;
+    }
+    .footerSocialLinks div svg {
+        font-size: large !important;
+        margin: 5px !important;
+    }
+
+    .footerSocialLinksContent {
+        padding: 10px;
+    }
+
+    .footerTabsContent {
+        padding: 20px
+    }
 }

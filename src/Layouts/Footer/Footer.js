@@ -9,11 +9,11 @@ const Footer = () => {
   return (
     <div className={`${styles.footer}`}>
       <div className={`${styles.footerContent} row p-4`}>
-        <div className={`${styles.footerSocialLinks} col-md-4`}>
+        <div className={`${styles.footerSocialLinks} col-md-4 col-sm-12 col-12`}>
           <div className={`${styles.footerSocialLinksContent} row justify-content-center align-items-center flex-column`}>
-            <div className={`col-md-12 mx-3`}>
+            <div className={`${styles.footerEmailContent} col-md-12 mx-3`}>
               <strong style={{ color: "white", fontFamily: "rubikScribble", fontSize: "2vw" }}>Appointment just one click away</strong>
-              <div className={`col-md-12 d-flex justify-content-start align-items-center`}>
+              <div className={`${styles.footerMailBox} col-md-12 d-flex justify-content-start align-items-center`}>
                 <div className={`${styles.mailBox}  col-md-8 d-flex mt-2`}>
                   <div className={`${styles.sendMail} col-md-6`}>
                     <input type="text" className={`${styles.sendMailInput} col-md-12`} />
@@ -25,7 +25,7 @@ const Footer = () => {
 
               </div>
             </div>
-            <div className={`col-md-12 d-flex justify-content-start mt-5 mx-3 flex-column`} style={{ marginTop: "0" }}>
+            <div className={`${styles.footerSocialLinks}col-md-12 d-flex justify-content-start mt-5 mx-3 flex-column`} style={{ marginTop: "0" }}>
               <div className="question col-md-10">
                 <strong style={{ color: "orange", fontSize: "1.5vw" }}>Have a question?</strong>
               </div>
@@ -41,11 +41,11 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className={`${styles.footerTabs} col-md-8`}>
+        <div className={`${styles.footerTabs} col-md-8 col-sm-12 col-12`}>
           <div className={`${styles.footerTabsContent} row justify-content-center align-items-center`}>
-            {Array(4).fill(0).map(()=>{
+            {Array(2).fill(0).map(()=>{
               return (
-                <div className="col-md-3 text-center">
+                <div className="col-md-6 col-sm-6 col-6 text-center">
                   <strong style={{color:"white"}}><u>Popular</u></strong>
                   {Array(5).fill(0).map(()=>{
                     return (
