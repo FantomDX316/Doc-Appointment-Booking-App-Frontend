@@ -14,7 +14,7 @@ const Home = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { loggedInUserData } = useSelector((state) => state?.authentication)
+  const { loggedInUserData } = useSelector((state) => state?.authentication);
 
   // ----------------------------------------------------------------------------------------------------------
   // ------------------------------------------------------Functions-------------------------------------------
@@ -55,11 +55,14 @@ const Home = () => {
               className={`${styles.seeMoreBtn} col-md-12 col-sm-12 col-12 text-center`}
             >
               <input
+                style={{ letterSpacing: "5px",fontFamily:"monospace" }}
                 type="button"
                 name="See More"
                 value="See More"
                 onClick={() => {
-                  counselorChecker(loggedInUserData) ? navigate("/profile") : navigate("/therapy");
+                  counselorChecker(loggedInUserData)
+                    ? navigate("/profile")
+                    : navigate("/therapy");
                 }}
               />
             </div>
