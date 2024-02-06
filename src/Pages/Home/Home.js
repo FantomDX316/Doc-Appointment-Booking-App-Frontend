@@ -39,8 +39,10 @@ const Home = () => {
       <div className={`${styles.homeWrapper} row p-4`}>
         <div className={`${styles.homeContent} col-md-6 col-sm-6 col-12 p-4`}>
           <div className={`${styles.homeContentWrapper}`}>
-            <h1>Book Appointment and Trust us with that</h1>
-            <p>
+            <h1 className="text-center">
+              Book Appointment and Trust us with that
+            </h1>
+            <p className="text-center">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
               similique nulla necessitatibus dignissimos doloribus quis quam
               dolor fuga corrupti vel. Lorem ipsum dolor sit amet consectetur
@@ -55,7 +57,7 @@ const Home = () => {
               className={`${styles.seeMoreBtn} col-md-12 col-sm-12 col-12 text-center`}
             >
               <input
-                style={{ letterSpacing: "5px",fontFamily:"monospace" }}
+                style={{ letterSpacing: "5px", fontFamily: "monospace" }}
                 type="button"
                 name="See More"
                 value="See More"
@@ -69,7 +71,9 @@ const Home = () => {
           </div>
         </div>
         <div className={`${styles.homeImage} col-md-6 col-sm-6 col-12`}>
-          <div className={`${styles.homeImageWrapper} d-flex align-items-center`}>
+          <div
+            className={`${styles.homeImageWrapper} d-flex align-items-center`}
+          >
             <img src={docImg} />
           </div>
         </div>
