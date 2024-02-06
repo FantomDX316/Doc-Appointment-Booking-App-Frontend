@@ -14,9 +14,13 @@ import { counselorChecker } from "../../utils/utilsIndex";
 const Header = () => {
   // -----------------------------------------------------States------------------------------------------------------------
   const blogArray = [
-    { path: "/blogs", value: "Blogs", counselor: false },
-    { path: "/my-blogs", value: "My Blogs", counselor: true },
-    { path: "/create-blog", value: "Create Blog", counselor: true },
+    { path: "/blogs", value: "Blogs", access: ["Counselor", "User"] },
+    { path: "/my-blogs", value: "My Blogs", access: ["Counselor"] },
+    {
+      path: "/create-blog",
+      value: "Create Blog",
+      access: ["Counselor"],
+    },
   ];
 
   const [openMenu, setOpenMenu] = useState(false);
@@ -103,7 +107,7 @@ const Header = () => {
         <div
           className={`${styles.navTabs} col-md-8 col-sm-8 col-8 d-flex align-items-center justify-content-start`}
         >
-          {Array(3)
+          {Array(2)
             .fill(0)
             .map(() => {
               return (
@@ -158,8 +162,9 @@ const Header = () => {
                 {blogArray.map((blogItem, index) => {
                   return (
                     <>
-                      {counselorChecker(loggedInUserData) ===
-                        blogItem.counselor && (
+                      {blogItem.access.includes(
+                        loggedInUserData.decodedData.role
+                      ) && (
                         <li
                           style={{
                             // borderBottom: `${
@@ -167,7 +172,6 @@ const Header = () => {
                             //     ? "1px solid #e6e6fa"
                             //     : ""
                             // }`,
-                            textAlign: "center",
                           }}
                         >
                           <Link className="dropdown-item" to={blogItem?.path}>
@@ -180,6 +184,15 @@ const Header = () => {
                 })}
               </ul>
             </div>
+          </div>
+          <div
+            className={`${styles.navTab} col-md-2`}
+            onClick={() => {
+              navigate("/profile");
+            }}
+            style={{cursor:"pointer"}}
+          >
+            Profile
           </div>
 
           {!isUserLoggedIn ? (
