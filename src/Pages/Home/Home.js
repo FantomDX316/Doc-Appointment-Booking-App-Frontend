@@ -69,7 +69,7 @@ const Home = () => {
           </div>
         </div>
         <div className={`${styles.homeImage} col-md-6 col-sm-6 col-12`}>
-          <div className={`${styles.homeImageWrapper}`}>
+          <div className={`${styles.homeImageWrapper} d-flex align-items-center`}>
             <img src={docImg} />
           </div>
         </div>
