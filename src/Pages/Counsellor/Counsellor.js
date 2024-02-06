@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateCounselor } from "../../Features/Actions/Counselor/counselorActions";
 import { useNavigate } from "react-router-dom";
 import { resetCounselorState } from "../../Features/Slices/Counselor/counselorSlice";
+import { setCounselorProfileUpdation } from "../../Features/Slices/Authentication/authenticationSlice";
 // -----------------------------------------------------------------------------------------------------------------------------------
 
 const Counsellor = () => {
@@ -84,6 +85,7 @@ const Counsellor = () => {
     if (isCounselorUpdated) {
       navigate("/");
       dispatch(resetCounselorState(false));
+      dispatch(setCounselorProfileUpdation());
     }
   }, [isCounselorUpdated]);
 
