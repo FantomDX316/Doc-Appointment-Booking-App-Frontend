@@ -13,7 +13,7 @@ export const counselorChecker = (loggedInUserData) => {
 
 // isCounselorProfileUpdated -- function to check whether the counselor has updated the profile or not
 export const isCounselorProfileUpdated = (loggedInUserData) => {
-    if (loggedInUserData?.decodedData?.isCounselorProfileUpdated == true) {
+    if (loggedInUserData?.decodedData?.isCounselorProfileUpdated === true) {
         return true;
     } else {
         return false;
