@@ -9,3 +9,33 @@
     background-repeat: no-repeat;
     background-position: center;
 }
+
+.callCard{
+    height: 150px;
+    box-shadow: 1px 1px 2px 2px grey;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.callCard h6{
+    font-weight: bold;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.callCard:hover{
+    background-color: green;
+}
+
+.callCard:hover svg{
+    color: white;
+}
+
+.callCard:hover h5{
+    color: white;
+}
+
+.appointmentContainer{
+    box-shadow: 1px 1px 3px 3px rgb(237, 237, 237);
+    margin: 25px;
+    border-radius: 10px;
+}

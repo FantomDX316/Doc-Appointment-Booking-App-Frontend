@@ -74,5 +74,6 @@
 
     .homeImageWrapper {
         width: 100%;
+        clip-path:none;
     }
 }
