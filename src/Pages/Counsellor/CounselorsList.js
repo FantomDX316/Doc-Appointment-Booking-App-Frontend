@@ -18,7 +18,7 @@ const CounselorsList = () => {
           className={`${styles.mainContent} col-md-12 col-12 col-sm-12 d-flex justify-content-center align-items-center p-4`}
         >
           <div
-            className={`${styles.counselorListWrapper} col-md-12 col-sm-12 col-12 d-flex justify-content-center p-1 flex-wrap gap-3`}
+            className={`${styles.counselorListWrapper} col-md-12 col-sm-12 col-12 d-flex justify-content-center p-1 flex-wrap gap-5`}
           >
             {Array(5)
               .fill(0)
