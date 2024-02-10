@@ -29,19 +29,20 @@ const FilterCarousel = () => {
         .fill(0)
         .map(() => {
           return (
-            <SwiperSlide style={{textAlign:"center",padding:"50px"}}>
-                <style jsx="true">
-                    {`.filterCard{
-                        border:1px solid pink;
-                        box-shadow:3px 3px 8px 2px grey;
-                        border-radius:5px;
-                        padding:10px;
-                        font-weight:bolder;
-                        cursor:pointer;
-                        color:blue;
-                    }
-                    `}
-                </style>
+            <SwiperSlide style={{ textAlign: "center", padding: "50px" }}>
+              <style jsx="true">
+                {`
+                  .filterCard {
+                    border: 1px solid pink;
+                    box-shadow: 3px 3px 8px 2px grey;
+                    border-radius: 5px;
+                    padding: 10px;
+                    font-weight: bolder;
+                    cursor: pointer;
+                    color: blue;
+                  }
+                `}
+              </style>
               <div className="filterCard">Filter</div>
             </SwiperSlide>
           );

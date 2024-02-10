@@ -5,6 +5,7 @@ import BlogCard2 from "../../Components/Card/BlogCard/BlogCard2";
 import styles from "./Blogs.module.css";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import FilterCarousel from "../../Components/Carousel/FilterCarousel/FilterCarousel";
 // -------------------------------------------------------------------------------------------------------------
 
 const Blogs = () => {
@@ -18,15 +19,8 @@ const Blogs = () => {
       className={`${styles.blogsContainer} d-flex justify-content-center flex-wrap`}
     >
       <div className={`${styles.leftContainer} col-md-8 col-sm-8 col-12 `}>
-        <div
-          className={`${styles.blogFilter} col-md-11 col-sm-11 col-11 d-flex align-items-center gap-3`}
-        >
-          {Array(10)
-            .fill(0)
-            .map((_, index) => {
-              return <h6>{`Filter ${index + 1}`}</h6>;
-            })}
-        </div>
+        <FilterCarousel />
+
         <div
           className={`${styles.blogsWrapper}  col-md-11 col-11 col-sm-11 p-5 d-flex flex-column justify-content-center align-items-center`}
         >
@@ -37,7 +31,7 @@ const Blogs = () => {
             })}
         </div>
       </div>
-      <div className={`${styles.rightContainer} col-md-4 col-sm-4 col-12 `}>
+      <div className={`${styles.rightContainer} col-md-4 col-sm-4 col-12 mt-5`}>
         <div
           className={`${styles.rightContainerTitle} col-md-12 col-sm-12 col-12 `}
         >
