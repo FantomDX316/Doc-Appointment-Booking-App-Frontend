@@ -93,8 +93,10 @@ const CounselorProfile = () => {
                   <h5>601, Notan Heights, 18A, Gurunanak Rd, Mumbai</h5>
                   <h6>Mumbai centre +912071171501</h6>
                 </div>
-                <div className="locationCarousel col-md-12 col-12 col-sm-12">
-                  <CounselorProfileCarousel />
+                <div className="locationCarousel col-md-12 col-12 col-sm-12 d-flex justify-content-center">
+                  <div className="carouselContainer col-md-8 col-sm-8 col-8 ">
+                    <CounselorProfileCarousel />
+                  </div>
                 </div>
                 <div className="sessionDuration"></div>
               </div>
