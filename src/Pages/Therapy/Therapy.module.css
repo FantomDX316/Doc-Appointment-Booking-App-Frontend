@@ -35,7 +35,6 @@
 
 .therapyCategoriesContainer {
     width: 80%;
-    border: 2px solid yellow;
     padding: 10px;
     display: flex;
     flex-wrap: wrap;
