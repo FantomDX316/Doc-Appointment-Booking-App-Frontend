@@ -7,11 +7,11 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    background-color: peachpuff;
+    background-color: rgba(255, 0, 0, 0.609);
 }
 
 .backBtn {
-    border-bottom: 1px solid rgb(255, 183, 183);
+    /* border-bottom: 1px solid rgb(255, 183, 183); */
     padding-left: 5vw;
 }
 
@@ -35,7 +35,6 @@
 
 .therapyCategoriesContainer {
     width: 80%;
-    border: 2px solid yellow;
     padding: 10px;
     display: flex;
     flex-wrap: wrap;
