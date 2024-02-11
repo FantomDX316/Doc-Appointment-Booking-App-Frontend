@@ -80,10 +80,10 @@ const CounselorProfile = () => {
                   <h6>Mumbai centre +912071171501</h6>
                 </div>
                 <div className="locationCarousel">
-                  
+
                 </div>
                 <div className="sessionDuration">
-
+            
                 </div>
               </div>
             </div>
