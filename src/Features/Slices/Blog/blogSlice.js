@@ -1,13 +1,18 @@
 // ---------------------------------------------------------Imports-------------------------------------------------------------------
 import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
-import { createBlog, getBlogs } from "../../Actions/Blog/blogActions";
+import {
+  createBlog,
+  getBlogs,
+  getCounselorBlogs,
+} from "../../Actions/Blog/blogActions";
 // -----------------------------------------------------------------------------------------------------------------------------------
 
 // -----------------------------------------------------------------------------------------------------------------------------------
 const initialState = {
   isBlogLoading: false,
   blogData: [],
+  counselorBlogData: [],
   errorMessage: "",
   isBlogCreated: false,
 };
@@ -56,6 +61,20 @@ const blogSlice = createSlice({
         state.blogData = action?.payload;
       })
       .addCase(getBlogs.rejected, (state, action) => {
+        state.isBlogLoading = false;
+        state.errorMessage = action?.payload?.message;
+      })
+
+      // getCounselorBlogs  lifecycle actions
+      .addCase(getCounselorBlogs.pending, (state, action) => {
+        state.isBlogLoading = true;
+        state.errorMessage = "";
+      })
+      .addCase(getCounselorBlogs.fulfilled, (state, action) => {
+        state.isBlogLoading = false;
+        state.counselorBlogData = action?.payload;
+      })
+      .addCase(getCounselorBlogs.rejected, (state, action) => {
         state.isBlogLoading = false;
         state.errorMessage = action?.payload?.message;
       });

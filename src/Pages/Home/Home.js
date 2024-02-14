@@ -4,7 +4,10 @@ import styles from "./Home.module.css";
 import docImg from "../../Assets/Images/homeDocImg.jpg";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { getBlogs } from "../../Features/Actions/Blog/blogActions";
+import {
+  getBlogs,
+  getCounselorBlogs,
+} from "../../Features/Actions/Blog/blogActions";
 import { useDispatch, useSelector } from "react-redux";
 import { counselorChecker } from "../../utils/utilsIndex";
 // -----------------------------------------------------------------------------------------------------------------------------------
@@ -27,11 +30,23 @@ const Home = () => {
       toast.error(error.message);
     }
   };
+
+  // fetchCounselorBlogsData -- function to fetch the counselor blogs
+  const fetchCounselorBlogsData = async (param) => {
+    try {
+      const counselorBlogsData = await dispatch(getCounselorBlogs(param));
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
   // ----------------------------------------------------------------------------------------------------------
 
   // ------------------------------------------------------useEffects-------------------------------------------
   useEffect(() => {
     fetchBlogsData("0");
+    loggedInUserData.decodedData.role === "Counselor" &&
+      fetchCounselorBlogsData(loggedInUserData.decodedData.counselorId);
   });
   // ----------------------------------------------------------------------------------------------------------
   return (

@@ -41,3 +41,21 @@ export const getBlogs = createAsyncThunk(
     }
   }
 );
+
+//getCounselorBlogs -- getCounselorBlogs in order to fetch the counselor blogs
+export const getCounselorBlogs = createAsyncThunk(
+  "blog/getCounselorBlogs",
+  async (param, { rejectWithValue }) => {
+    try {
+      const response = await instance.get(`/getBlogs/${param}`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      return response?.data;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
