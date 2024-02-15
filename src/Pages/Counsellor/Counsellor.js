@@ -304,27 +304,7 @@ const Counsellor = () => {
             </p>
           )}
         </div>
-        {/* <div
-          className={`${styles.counsellorIntroductoryVideos} col-md-12 col-12 col-sm-12 d-flex justify-content-center flex-wrap m-3`}
-        >
-          <p
-            className={`${styles.counsellorBioTitle} col-md-12 col-sm-12 col-12 mb-3`}
-          >
-            Counselor Introductory Videos
-          </p>
-          <div className="col-md-10 col-10 col-sm-10 d-flex justify-content-start">
-            <input type="file" accept="video/mp4" onChange={introVideoHandler} />
-          </div>
-          <div
-            className={`${styles.selectElement} col-md-10 col-sm-10 col-10 m-2 p-2  gap-3 d-flex align-items-center justify-content-center flex-wrap`}
-          >
-            {
-              videoData.map((video, index) => {
-                return <div className={`${styles.introVideoElement} p-1 col-md-4 col-sm-12 col-12 text-center`}>{`Video ${index + 1} - ${video?.name.length > 10 ? video?.name.slice(0, 10) : video?.name}...`}</div>
-              })
-            }
-          </div>
-        </div> */}
+        
         <div
           className={`${styles.submitCounselorProfile} col-md-12 col-12 col-sm-12 d-flex justify-content-center flex-wrap m-3`}
         >
