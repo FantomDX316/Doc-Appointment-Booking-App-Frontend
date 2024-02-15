@@ -24,4 +24,24 @@ export const updateCounselor = createAsyncThunk(
   }
 );
 
+// counselorIntroductoryVideos -- counselorIntroductoryVideos action to call the counselorDetails api and get the respective response
+export const counselorIntroductoryVideos = createAsyncThunk(
+  "counselor/counselorIntroductoryVideos",
+  async ({ payload, counselorId }, { rejectWithValue }) => {
+    try {
+      const response = await instance.put(
+        `/counselorDetails/${counselorId}/video`,
+        payload,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
 
+      return response?.data;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);

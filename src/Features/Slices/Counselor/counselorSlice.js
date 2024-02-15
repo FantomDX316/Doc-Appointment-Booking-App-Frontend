@@ -1,7 +1,10 @@
 // ---------------------------------------------------------Imports-------------------------------------------------------------------
 import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
-import { updateCounselor } from "../../Actions/Counselor/counselorActions";
+import {
+  counselorIntroductoryVideos,
+  updateCounselor,
+} from "../../Actions/Counselor/counselorActions";
 // -----------------------------------------------------------------------------------------------------------------------------------
 
 // -----------------------------------------------------------------------------------------------------------------------------------
@@ -10,7 +13,6 @@ const initialState = {
   counselorData: {},
   errorMessage: "",
   isCounselorUpdated: false,
-  
 };
 
 // -----------------------------------------------------------------------------------------------------------------------------------
@@ -41,6 +43,24 @@ const counselorSlice = createSlice({
         toast.success("Counselor Details Updated Successfully");
       })
       .addCase(updateCounselor.rejected, (state, action) => {
+        state.isCounselorLoading = false;
+        state.errorMessage = action?.payload?.message;
+        state.isCounselorUpdated = false;
+      })
+
+      // counselorIntroductoryVideos lifecycle actions
+      .addCase(counselorIntroductoryVideos.pending, (state, action) => {
+        state.isCounselorLoading = true;
+        state.errorMessage = "";
+        state.isCounselorUpdated = false;
+      })
+      .addCase(counselorIntroductoryVideos.fulfilled, (state, action) => {
+        state.isCounselorLoading = false;
+        state.isCounselorUpdated = true;
+        state.counselorData = action?.payload?.counselor;
+        toast.success("Counselor Details Updated Successfully");
+      })
+      .addCase(counselorIntroductoryVideos.rejected, (state, action) => {
         state.isCounselorLoading = false;
         state.errorMessage = action?.payload?.message;
         state.isCounselorUpdated = false;
