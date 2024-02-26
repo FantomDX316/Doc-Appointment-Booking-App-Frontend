@@ -8,18 +8,18 @@ import { jwtDecode } from "jwt-decode";
 
 // createPayment -- createPayment action to call the createPayment api and get the respective response
 export const createPayment = createAsyncThunk(
-  "payment/createPayment",
-  async (payload, { rejectWithValue }) => {
-    try {
-      const response = await instance.post(`/createPayment`, payload, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+    "payment/createPayment",
+    async (payload, { rejectWithValue }) => {
+        try {
+            const response = await instance.post(`/createPayment`, payload, {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
 
-      return response?.data;
-    } catch (error) {
-      return rejectWithValue(error);
+            return response?.data;
+        } catch (error) {
+            return rejectWithValue(error);
+        }
     }
-  }
 );

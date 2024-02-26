@@ -7,9 +7,10 @@ import { createPayment } from "../../Actions/Payment/paymentActions";
 
 // -----------------------------------------------------------------------------------------------------------------------------------
 const initialState = {
-  isPaymentLoading: false,
-  paymentData: {},
-  errorMessage: "",
+    isPaymentLoading: false,
+    paymentData: {},
+    errorMessage: "",
+    isOrderCreated: false
 };
 
 // -----------------------------------------------------------------------------------------------------------------------------------
@@ -17,33 +18,36 @@ const initialState = {
 // -----------------------------------------------------Authentication Slice----------------------------------------------------------
 
 const paymentSlice = createSlice({
-  name: "payment",
-  initialState,
-  reducers: {
-    resetCounselorState: (state, action) => {
-      state.isCounselorUpdated = action?.payload;
+    name: "payment",
+    initialState,
+    reducers: {
+        resetCounselorState: (state, action) => {
+            state.isCounselorUpdated = action?.payload;
+        },
     },
-  },
-  extraReducers: (builder) => {
-    builder
+    extraReducers: (builder) => {
+        builder
 
-      // createPayment  lifecycle actions
-      .addCase(createPayment.pending, (state, action) => {
-        state.isPaymentLoading = true;
-        state.errorMessage = "";
-        state.isCounselorUpdated = false;
-      })
-      .addCase(createPayment.fulfilled, (state, action) => {
-        state.isPaymentLoading = false;
-        state.paymentData = action?.payload;
-        toast.success("Order Created Successfully");
-      })
-      .addCase(createPayment.rejected, (state, action) => {
-        state.isPaymentLoading = false;
-        state.errorMessage = action?.payload;
-      })
-      
-  },
+            // createPayment  lifecycle actions
+            .addCase(createPayment.pending, (state, action) => {
+                state.isPaymentLoading = true;
+                state.errorMessage = "";
+                state.isOrderCreated = false;
+            })
+            .addCase(createPayment.fulfilled, (state, action) => {
+                state.isPaymentLoading = false;
+                state.paymentData = action?.payload;
+                state.isOrderCreated = true;
+                toast.success("Order Created Successfully");
+            })
+            .addCase(createPayment.rejected, (state, action) => {
+                state.isPaymentLoading = false;
+                state.errorMessage = action?.payload;
+                state.isOrderCreated = false;
+
+            })
+
+    },
 });
 
 export const paymentReducer = paymentSlice.reducer;

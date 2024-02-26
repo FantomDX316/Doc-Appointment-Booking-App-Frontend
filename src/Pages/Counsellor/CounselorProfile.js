@@ -4,9 +4,41 @@ import styles from "./CounselorProfile.module.css";
 import { FaHome, FaVideo } from "react-icons/fa";
 import { IoCallSharp } from "react-icons/io5";
 import CounselorProfileCarousel from "../../Components/Carousel/CounselorProfileCarousel/CounselorProfileCarousel";
+import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { createPayment } from "../../Features/Actions/Payment/paymentActions";
+import { useEffect } from "react";
 // -----------------------------------------------------------------------------------------------------
 
 const CounselorProfile = () => {
+
+
+  // ---------------------------------------------------States-----------------------------------------------------------------
+  // -----------------------------------------------------------------------------------------------------------------------------
+  // ---------------------------------------------------Hooks-----------------------------------------------------------------
+  const dispatch = useDispatch();
+
+  const { isOrderCreated } = useSelector((state) => state?.payment)
+  // -----------------------------------------------------------------------------------------------------------------------------
+  // ---------------------------------------------------Functions-----------------------------------------------------------------
+  // checkoutHandler -- handler to call for the payment
+  const checkoutHandler = () => {
+    try {
+      dispatch(createPayment({ ticketPrice: 4000 }))
+    } catch (error) {
+      toast.error(error.message);
+    }
+  }
+
+  // ---------------------------------------------------useEffect-----------------------------------------------------------------
+  useEffect(() => {
+    if (isOrderCreated) {
+
+    }
+  }, [isOrderCreated])
+
+  // -----------------------------------------------------------------------------------------------------------------------------
+  // -----------------------------------------------------------------------------------------------------------------------------
   return (
     <div class="row py-2 px-1">
       <div class="col-md-10 mx-auto">
@@ -69,6 +101,7 @@ const CounselorProfile = () => {
                   </div>
                   <div
                     className={`${styles.callCard} col-md-2 col-sm-2 col-2 d-flex flex-column align-items-center`}
+                    onClick={checkoutHandler}
                   >
                     <div className="callCardLogo col-md-12 col-sm-12 col-12 d-flex align-items-center justify-content-center">
                       <FaVideo size={"50%"} />
