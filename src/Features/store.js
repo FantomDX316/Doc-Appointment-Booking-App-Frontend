@@ -6,6 +6,7 @@ import storage from "redux-persist/lib/storage";
 import { authenticationReducer } from "./Slices/Authentication/authenticationSlice";
 import { blogReducer } from "./Slices/Blog/blogSlice";
 import { counselorReducer } from "./Slices/Counselor/counselorSlice";
+import { paymentReducer } from "./Slices/Payment/paymentSlice"; 
 // --------------------------------------------------------------------------------------------------------------------------------------------
 
 // -------------------------------------------------------------------Store Config--------------------------------------------------------------
@@ -27,7 +28,8 @@ const persistReducerConfiguration = {
 const reducer = combineReducers({
     authentication: authenticationReducer,
     blog: blogReducer,
-    counselor:counselorReducer
+    counselor:counselorReducer,
+    payment:paymentReducer
 });
 
 // rootReducer -- rootReducer is passed as the root reducer and also used for reseting the state
