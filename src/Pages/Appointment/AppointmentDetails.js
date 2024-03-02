@@ -1,9 +1,12 @@
 // --------------------------------------------------------------Imports--------------------------------------------------
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from "./AppointmentDetails.module.css"
 import DatePicker from "react-datepicker";
 import { useState } from 'react';
 import { toast } from 'react-toastify';
+import { useDispatch, useSelector } from 'react-redux';
+import { resetPaymentStatus } from '../../Features/Slices/Payment/paymentSlice';
+import { createPayment } from '../../Features/Actions/Payment/paymentActions';
 
 // ------------------------------------------------------------------------------------------------------------------------
 
@@ -11,23 +14,57 @@ import { toast } from 'react-toastify';
 
 const AppointmentDetails = () => {
     // --------------------------------------------------------------States---------------------------------------------------
-    const [dateArray, setDateArray] = useState([]);
-    const [newDate, setNewDate] = useState();
+    const [newDate, setNewDate] = useState("");
+
+    const options = {
+        "key": `${process.env.RAZORPAY_KEY_ID}`, // Enter the Key ID generated from the Dashboard
+        "amount": "40000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        "currency": "INR",
+        "name": "Acme Corp",
+        "description": "Test Transaction",
+        "image": "https://example.com/your_logo",
+        "order_id": "order_IluGWxBm9U8zJ8", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+        "callback_url": "https://eneqd3r9zrjok.x.pipedream.net/",
+        "prefill": {
+            "name": "Gaurav Kumar",
+            "email": "gaurav.kumar@example.com",
+            "contact": "9000090000"
+        },
+        "notes": {
+            "address": "Razorpay Corporate Office"
+        },
+        "theme": {
+            "color": "#3399cc"
+        }
+    };
+    // ------------------------------------------------------------------------------------------------------------------------
+    // --------------------------------------------------------------Hooks---------------------------------------------------
+    const { isOrderCreated } = useSelector((state) => state?.payment);
+
+    const dispatch = useDispatch();
+
     // ------------------------------------------------------------------------------------------------------------------------
     // --------------------------------------------------------------Functions---------------------------------------------------
     //   dateHandler -- handler to handle the date picked by the user
     const dateHandler = (date) => {
-        console.log("this is the date", date);
-        setDateArray([...dateArray, date.toISOString()]);
-        setNewDate(date);
+        try {
+            setNewDate(date);
+        } catch (error) {
+            toast.error(error.message)
+        }
+
     };
+
 
     // bookingHandler -- handler to to book the appointment
     const bookingHandler = () => {
 
         try {
-            if(!newDate){
+            if (!newDate) {
                 toast.error("Please Pick Date and Time for booking an appointment")
+            } else {
+
+                dispatch(createPayment({ ticketPrice: 4000, appointmentDate: newDate }))
             }
         }
         catch (error) {
@@ -35,6 +72,15 @@ const AppointmentDetails = () => {
         }
     }
 
+    // ------------------------------------------------------------------------------------------------------------------------
+    // ------------------------------------------------------------------------------------------------------------------------
+    useEffect(() => {
+        if (isOrderCreated) {
+            const razor = new window.Razorpay(options);
+            razor.open();
+            dispatch(resetPaymentStatus(false));
+        }
+    }, [isOrderCreated])
     // ------------------------------------------------------------------------------------------------------------------------
 
     return (
@@ -56,6 +102,7 @@ const AppointmentDetails = () => {
                             selected={newDate}
                             showTimeSelect
                         />
+                        {newDate && <p className='mt-2' style={{ color: "green" }}>Booking appointment for {`${new Date(newDate).getDate()}-${new Date(newDate).getMonth() + 1}-${new Date(newDate).getFullYear()}`}</p>}
                     </div>
                     <div className={`${styles.bookBtn}`}>
                         <button className='' onClick={bookingHandler}>Book Now</button>
