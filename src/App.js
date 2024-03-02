@@ -29,6 +29,7 @@ import {
 } from "./utils/utilsIndex.js";
 import CounselorsList from "./Pages/Counsellor/CounselorsList";
 import CounselorProfile from "./Pages/Counsellor/CounselorProfile.js";
+import AppointmentDetails from "./Pages/Appointment/AppointmentDetails";
 
 // ---------------------------------------------------------------------------------------------------------------------------------------
 
@@ -153,6 +154,22 @@ function App() {
               )
             ) : (
               <Blogs />
+            )
+          ) : (
+            <Navigate to="/login" />
+          ),
+        },
+        {
+          path: "/appointment-details",
+          element: isUserLoggedIn ? (
+            counselorChecker(loggedInUserData) ? (
+              isCounselorProfileUpdated(loggedInUserData) ? (
+                <AppointmentDetails />
+              ) : (
+                <Counsellor />
+              )
+            ) : (
+              <AppointmentDetails />
             )
           ) : (
             <Navigate to="/login" />

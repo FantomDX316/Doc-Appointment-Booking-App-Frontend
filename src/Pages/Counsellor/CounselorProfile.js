@@ -8,34 +8,27 @@ import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { createPayment } from "../../Features/Actions/Payment/paymentActions";
 import { useEffect } from "react";
+import { resetPaymentStatus } from "../../Features/Slices/Payment/paymentSlice";
+import { useNavigate } from "react-router-dom";
 // -----------------------------------------------------------------------------------------------------
 
 const CounselorProfile = () => {
 
 
   // ---------------------------------------------------States-----------------------------------------------------------------
+
   // -----------------------------------------------------------------------------------------------------------------------------
   // ---------------------------------------------------Hooks-----------------------------------------------------------------
   const dispatch = useDispatch();
 
+  const navigate = useNavigate();
+
   const { isOrderCreated } = useSelector((state) => state?.payment)
   // -----------------------------------------------------------------------------------------------------------------------------
   // ---------------------------------------------------Functions-----------------------------------------------------------------
-  // checkoutHandler -- handler to call for the payment
-  const checkoutHandler = () => {
-    try {
-      dispatch(createPayment({ ticketPrice: 4000 }))
-    } catch (error) {
-      toast.error(error.message);
-    }
-  }
 
   // ---------------------------------------------------useEffect-----------------------------------------------------------------
-  useEffect(() => {
-    if (isOrderCreated) {
 
-    }
-  }, [isOrderCreated])
 
   // -----------------------------------------------------------------------------------------------------------------------------
   // -----------------------------------------------------------------------------------------------------------------------------
@@ -91,6 +84,8 @@ const CounselorProfile = () => {
                 <div className="callOptions col-md-12 col-12 col-sm-12 d-flex gap-5 justify-content-center">
                   <div
                     className={`${styles.callCard} col-md-2 col-sm-2 col-2 d-flex flex-column align-items-center`}
+                    onClick={() => { navigate("/appointment-details") }}
+
                   >
                     <div className="callCardLogo col-md-12 col-sm-12 col-12 d-flex align-items-center justify-content-center">
                       <FaHome size={"50%"} />
@@ -101,7 +96,7 @@ const CounselorProfile = () => {
                   </div>
                   <div
                     className={`${styles.callCard} col-md-2 col-sm-2 col-2 d-flex flex-column align-items-center`}
-                    onClick={checkoutHandler}
+                    onClick={() => { navigate("/appointment-details") }}
                   >
                     <div className="callCardLogo col-md-12 col-sm-12 col-12 d-flex align-items-center justify-content-center">
                       <FaVideo size={"50%"} />
@@ -112,6 +107,8 @@ const CounselorProfile = () => {
                   </div>
                   <div
                     className={`${styles.callCard} col-md-2 col-sm-2 col-2 d-flex flex-column align-items-center`}
+                    onClick={() => { navigate("/appointment-details") }}
+
                   >
                     <div className="callCardLogo col-md-12 col-sm-12 col-12 d-flex align-items-center justify-content-center">
                       <IoCallSharp size={"50%"} />

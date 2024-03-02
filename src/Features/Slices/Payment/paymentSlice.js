@@ -21,8 +21,8 @@ const paymentSlice = createSlice({
     name: "payment",
     initialState,
     reducers: {
-        resetCounselorState: (state, action) => {
-            state.isCounselorUpdated = action?.payload;
+        resetPaymentStatus: (state, action) => {
+            state.isOrderCreated = action?.payload;
         },
     },
     extraReducers: (builder) => {
@@ -51,4 +51,4 @@ const paymentSlice = createSlice({
 });
 
 export const paymentReducer = paymentSlice.reducer;
-export const { resetCounselorState } = paymentSlice.actions;
+export const { resetPaymentStatus } = paymentSlice.actions;
