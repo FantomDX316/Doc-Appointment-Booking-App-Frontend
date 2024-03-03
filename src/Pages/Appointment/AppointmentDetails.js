@@ -16,15 +16,24 @@ const AppointmentDetails = () => {
     // --------------------------------------------------------------States---------------------------------------------------
     const [newDate, setNewDate] = useState("");
 
+    // ------------------------------------------------------------------------------------------------------------------------
+    // --------------------------------------------------------------Hooks---------------------------------------------------
+    const { isOrderCreated, paymentData } = useSelector((state) => state?.payment);
+
+    const dispatch = useDispatch();
+
     const options = {
-        "key": `${process.env.RAZORPAY_KEY_ID}`, // Enter the Key ID generated from the Dashboard
+        "key": `${process.env.REACT_APP_RAZORPAY_KEY_ID}`, // Enter the Key ID generated from the Dashboard
         "amount": "40000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
         "currency": "INR",
         "name": "Acme Corp",
         "description": "Test Transaction",
         "image": "https://example.com/your_logo",
-        "order_id": "order_IluGWxBm9U8zJ8", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-        "callback_url": "https://eneqd3r9zrjok.x.pipedream.net/",
+        "order_id": `${paymentData?.data?.id}`, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+        // "callback_url": "https://eneqd3r9zrjok.x.pipedream.net/",
+        handler: async (response) => {
+            alert("got response")
+        },
         "prefill": {
             "name": "Gaurav Kumar",
             "email": "gaurav.kumar@example.com",
@@ -37,12 +46,6 @@ const AppointmentDetails = () => {
             "color": "#3399cc"
         }
     };
-    // ------------------------------------------------------------------------------------------------------------------------
-    // --------------------------------------------------------------Hooks---------------------------------------------------
-    const { isOrderCreated } = useSelector((state) => state?.payment);
-
-    const dispatch = useDispatch();
-
     // ------------------------------------------------------------------------------------------------------------------------
     // --------------------------------------------------------------Functions---------------------------------------------------
     //   dateHandler -- handler to handle the date picked by the user
