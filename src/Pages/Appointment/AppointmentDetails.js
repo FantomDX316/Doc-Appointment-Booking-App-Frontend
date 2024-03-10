@@ -26,7 +26,7 @@ const AppointmentDetails = () => {
         "key": `${process.env.REACT_APP_RAZORPAY_KEY_ID}`, // Enter the Key ID generated from the Dashboard
         "amount": "40000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
         "currency": "INR",
-        "name": "Acme Corp",
+        "name": "DOC App",
         "description": "Test Transaction",
         "image": "https://example.com/your_logo",
         "order_id": `${paymentData?.data?.id}`, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
@@ -88,8 +88,8 @@ const AppointmentDetails = () => {
 
     return (
         <div className={`${styles.appointmentDetailsContainer} p-5`}>
-            <h1 className='text-center'>Appointment Details</h1>
-            <div className="mainContent border p-3">
+            <h1 className='text-center' style={{color:"red",fontWeight:"bolder"}}>Appointment Details</h1>
+            <div className="mainContent border p-5 my-4" style={{boxShadow:"1px 1px 1px 1px green",borderRadius:"20px"}}>
                 <h4 className='text-center'>Pick Appointment Date and Time</h4>
                 <div className="datePicker col-md-12 col-sm-12 col-12 d-flex flex-column align-items-center justify-content-center">
                     <div className={`col-md-8 col-8 col-sm-8 text-center`}>
