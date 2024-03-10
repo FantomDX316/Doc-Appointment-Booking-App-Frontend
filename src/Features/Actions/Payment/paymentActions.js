@@ -11,7 +11,7 @@ export const createPayment = createAsyncThunk(
     "payment/createPayment",
     async (payload, { rejectWithValue }) => {
         try {
-            const response = await instance.post(`/createPayment`, payload, {
+            const response = await instance.post(`/create/verify/payment`, payload, {
                 headers: {
                     "Content-Type": "application/json",
                 },
