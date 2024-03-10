@@ -19,6 +19,9 @@ const AppointmentDetails = () => {
     // ------------------------------------------------------------------------------------------------------------------------
     // --------------------------------------------------------------Hooks---------------------------------------------------
     const { isOrderCreated, paymentData, isOrderVerified } = useSelector((state) => state?.payment);
+    const { isUserLoggedIn, loggedInUserData } = useSelector(
+        (state) => state?.authentication
+    );
 
     const dispatch = useDispatch();
 
@@ -42,7 +45,7 @@ const AppointmentDetails = () => {
             }
             const paymentConfirmationData = { razorpay_order_id, razorpay_payment_id, razorpay_signature }
 
-            dispatch(verifyPayment({ orderDetails, paymentConfirmationData, action: "verify", appointmentData: { dateNtime: newDate, counselorId: "DummyCounselorId" } }))
+            dispatch(verifyPayment({ orderDetails, paymentConfirmationData, action: "verify", appointmentData: { dateNtime: newDate, counselorId: "DummyCounselorId", userId: loggedInUserData?.decodedData?.id } }))
         },
         "prefill": {
             "name": "Gaurav Kumar",
