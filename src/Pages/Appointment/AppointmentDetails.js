@@ -42,7 +42,7 @@ const AppointmentDetails = () => {
             }
             const paymentConfirmationData = { razorpay_order_id, razorpay_payment_id, razorpay_signature }
 
-            dispatch(verifyPayment({ orderDetails, paymentConfirmationData, action: "verify", appointmentData: { dateNtime: newDate, counselorId:"DummyCounselorId" } }))
+            dispatch(verifyPayment({ orderDetails, paymentConfirmationData, action: "verify", appointmentData: { dateNtime: newDate, counselorId: "DummyCounselorId" } }))
         },
         "prefill": {
             "name": "Gaurav Kumar",
