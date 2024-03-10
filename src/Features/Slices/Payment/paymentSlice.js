@@ -1,7 +1,7 @@
 // ---------------------------------------------------------Imports-------------------------------------------------------------------
 import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
-import { createPayment } from "../../Actions/Payment/paymentActions";
+import { createPayment, verifyPayment } from "../../Actions/Payment/paymentActions";
 
 // -----------------------------------------------------------------------------------------------------------------------------------
 
@@ -10,7 +10,8 @@ const initialState = {
     isPaymentLoading: false,
     paymentData: {},
     errorMessage: "",
-    isOrderCreated: false
+    isOrderCreated: false,
+    isOrderVerified: false
 };
 
 // -----------------------------------------------------------------------------------------------------------------------------------
@@ -23,6 +24,7 @@ const paymentSlice = createSlice({
     reducers: {
         resetPaymentStatus: (state, action) => {
             state.isOrderCreated = action?.payload;
+            state.isOrderVerified = action?.payload;
         },
     },
     extraReducers: (builder) => {
@@ -44,6 +46,24 @@ const paymentSlice = createSlice({
                 state.isPaymentLoading = false;
                 state.errorMessage = action?.payload;
                 state.isOrderCreated = false;
+
+            })
+            // verifyPayment  lifecycle actions
+            .addCase(verifyPayment.pending, (state, action) => {
+                state.isPaymentLoading = true;
+                state.errorMessage = "";
+                state.isOrderVerified = false;
+            })
+            .addCase(verifyPayment.fulfilled, (state, action) => {
+                state.isPaymentLoading = false;
+                state.paymentData = action?.payload;
+                state.isOrderVerified = true;
+                toast.success("Order Verified Successfully");
+            })
+            .addCase(verifyPayment.rejected, (state, action) => {
+                state.isPaymentLoading = false;
+                state.errorMessage = action?.payload;
+                state.isOrderVerified = false;
 
             })
 

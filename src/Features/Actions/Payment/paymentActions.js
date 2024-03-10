@@ -23,3 +23,23 @@ export const createPayment = createAsyncThunk(
         }
     }
 );
+
+// verifyPayment -- verifyPayment action to call the verifyPayment api and get the respective response
+export const verifyPayment = createAsyncThunk(
+    "payment/verifyPayment",
+    async (payload, { rejectWithValue }) => {
+        try {
+            const response = await instance.post(`/create/verify/payment`, payload, {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+
+            return response?.data;
+        } catch (error) {
+            return rejectWithValue(error);
+        }
+    }
+);
+
+

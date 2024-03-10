@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import { resetPaymentStatus } from '../../Features/Slices/Payment/paymentSlice';
-import { createPayment } from '../../Features/Actions/Payment/paymentActions';
+import { createPayment, verifyPayment } from '../../Features/Actions/Payment/paymentActions';
 
 // ------------------------------------------------------------------------------------------------------------------------
 
@@ -18,7 +18,7 @@ const AppointmentDetails = () => {
 
     // ------------------------------------------------------------------------------------------------------------------------
     // --------------------------------------------------------------Hooks---------------------------------------------------
-    const { isOrderCreated, paymentData } = useSelector((state) => state?.payment);
+    const { isOrderCreated, paymentData, isOrderVerified } = useSelector((state) => state?.payment);
 
     const dispatch = useDispatch();
 
@@ -32,7 +32,17 @@ const AppointmentDetails = () => {
         "order_id": `${paymentData?.id}`, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
         // "callback_url": "https://eneqd3r9zrjok.x.pipedream.net/",
         handler: async (response) => {
-            alert("got response")
+            const razorpay_order_id = response.razorpay_order_id;
+            const razorpay_payment_id = response.razorpay_payment_id;
+            const razorpay_signature = response.razorpay_signature;
+
+            const orderDetails = {
+                amount: 4000,
+                currency: "INR"
+            }
+            const paymentConfirmationData = { razorpay_order_id, razorpay_payment_id, razorpay_signature }
+
+            dispatch(verifyPayment({ orderDetails, paymentConfirmationData, action: "verify", appointmentData: { dateNtime: newDate, counselorId:"DummyCounselorId" } }))
         },
         "prefill": {
             "name": "Gaurav Kumar",
@@ -81,14 +91,18 @@ const AppointmentDetails = () => {
     }
 
     // ------------------------------------------------------------------------------------------------------------------------
-    // ------------------------------------------------------------------------------------------------------------------------
+    // ----------------------------------------------------------useEffects-----------------------------------------------------
     useEffect(() => {
         if (isOrderCreated) {
             const razor = new window.Razorpay(options);
             razor.open();
             dispatch(resetPaymentStatus(false));
+        };
+
+        if (isOrderVerified) {
+            dispatch(resetPaymentStatus(false));
         }
-    }, [isOrderCreated])
+    }, [isOrderCreated, isOrderVerified])
     // ------------------------------------------------------------------------------------------------------------------------
 
     return (
